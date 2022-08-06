@@ -96,7 +96,6 @@
             <li><nuxt-link to="#">Market Place</nuxt-link></li>
             <li><nuxt-link to="#">Contact Us</nuxt-link></li>
             <li><nuxt-link to="#">Impact</nuxt-link></li>
-            
           </ul>
         </div>
         <div class="col-lg-2 col-md-6 col-6 mb-3">
