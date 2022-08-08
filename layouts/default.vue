@@ -14,7 +14,7 @@ export default {}
 
 <style>
 body {
-  font-family: Roboto, sans-serif;
+  font-family: Verdana, sans-serif;
 }
 
 .btn-outline-main {

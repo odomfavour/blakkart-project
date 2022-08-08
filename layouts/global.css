@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "Verdana";
+    src: local("Verdana"),
+     url(~assets/verdana-font-family/verdana.ttf) format("truetype");
+}
+@font-face {
+    font-family: "CaghenDemo";
+    src: local("CaghenDemo"),
+     url(~assets/Caghen_Demo.ttf) format("truetype");
+}
+
+html {
+    font-family: "Verdana";
+}

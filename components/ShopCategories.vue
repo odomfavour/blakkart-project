@@ -3,17 +3,18 @@
     <VueSlickCarousel v-bind="settings" :dots="true" :arrows="true">
       <div
         class="user-card d-flex justify-content-center align-items-center"
-        v-for="pic in 10"
-        :key="pic"
+        :class="`user-${index}`"
+        v-for="(pic, index) in categories"
+        :key="index"
       >
-        <button class="btn-outline-main cat-btn">men</button>
+        <button class="btn-outline-main cat-btn">{{ pic.name }}</button>
       </div>
     </VueSlickCarousel>
     <section class="join-section">
       <div class="container">
         <div class="d-flex align-items-center inner-join">
           <div class="d-flex align-items-center flex-md-row flex-column">
-            <h3 class="Invite-text">
+            <h3 class="invite-text">
               Join our platform as a designer to showcase your products.
             </h3>
             <button class="black-btn">Join Blakkart Now!</button>
@@ -71,6 +72,38 @@ export default {
           },
         ],
       },
+      categories: [
+        {
+          name: 'men',
+        },
+        {
+          name: 'women',
+        },
+        {
+          name: 'footwear',
+        },
+        {
+          name: 'Babies',
+        },
+        {
+          name: 'Shop Bag',
+        },
+        {
+          name: 'Shop Jeweleries',
+        },
+        {
+          name: 'Shop Hair Products',
+        },
+        {
+          name: 'Shop Artworks',
+        },
+        {
+          name: 'Shop Fabrics',
+        },
+        {
+          name: 'Shop Headpiece',
+        },
+      ],
     }
   },
 }
@@ -88,6 +121,7 @@ export default {
 
 .cat-btn {
   width: 196px !important;
+  font-size: 12px;
 }
 
 .slick-slider .user-card {
@@ -133,6 +167,45 @@ export default {
 
 .join-section h3 {
   margin-right: 100px;
+}
+
+.invite-text {
+  font-size: 24px;
+}
+
+.slick-slider .user-0 {
+  background: url(/categories/main/men.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.slick-slider .user-0:hover {
+  background:  linear-gradient(45deg, #0000005e, #0000005e), url(/categories/main/men.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-1 {
+  background: url(/categories/main/women.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-1:hover {
+  background: linear-gradient(45deg, #0000005e, #0000005e), url(/categories/main/women.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-2 {
+  background: url(/categories/main/footwear.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-2:hover {
+  background: linear-gradient(45deg, #0000005e, #0000005e),url(/categories/main/footwear.png) no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 @media (max-width: 426px) {

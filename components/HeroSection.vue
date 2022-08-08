@@ -5,7 +5,7 @@
   >
     <div>
       <h3>Add Colours to</h3>
-      <h1>Lifestyle</h1>
+      <h1 class="main-show">Lifestyle</h1>
       <p>
         Rep your culture with a made-to-fit attire from our designers across
         Africa.
@@ -36,6 +36,10 @@ export default {}
     url(/hero.png) no-repeat center center;
   background-size: cover;
   color: #fff;
+}
+
+.main-show {
+  font-family: CaghenDemo, sans-serif;
 }
 
 #hero-section h1 {
