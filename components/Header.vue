@@ -19,7 +19,7 @@
                   <b-dropdown
                     variant="link"
                     toggle-class="text-decoration-none"
-                    class="top-drop text-dark"
+                    class="top-drop text-dark mr-2"
                   >
                     <template #button-content class="text-dark">
                       Impact
@@ -42,7 +42,8 @@
         </div>
       </div>
     </div>
-    <div class="logo-box text-center py-3">
+    <section class="main-header">
+      <div class="logo-box text-center py-3">
       <img src="/main-logo.png" alt="blakkart logo" />
     </div>
     <b-navbar toggleable="lg" type="light" variant="white">
@@ -70,7 +71,7 @@
               ></b-button>
             </b-nav-form>
             <div class="d-flex flex-lg-row flex-column">
-              <b-nav-item-dropdown right>
+              <b-nav-item-dropdown right class="mr-3">
                 <!-- Using 'button-content' slot -->
                 <template #button-content>
                   <b-icon icon="person-circle" class="mr-2"></b-icon>Account
@@ -78,14 +79,14 @@
                 <b-dropdown-item href="#">Profile</b-dropdown-item>
                 <b-dropdown-item href="#">Sign Out</b-dropdown-item>
               </b-nav-item-dropdown>
-              <b-nav-item href="#">
+              <b-nav-item href="#" class="mr-3">
                 <img src="/bag-1.png" class="img-fluid mr-2" />Cart</b-nav-item
               >
-              <b-nav-item href="#">
+              <b-nav-item href="#" class="mr-3">
                 <b-icon icon="question-circle-fill" class="mr-2"> </b-icon
                 >Help</b-nav-item
               >
-              <b-nav-item-dropdown text="Lang" right>
+              <b-nav-item-dropdown text="Lang" right class="mr-3">
                 <template #button-content>
                   <img src="/canada.png" alt="canada flag" class="img-fluid mr-1"> CAD
                 </template>
@@ -99,6 +100,7 @@
         </b-collapse>
       </div>
     </b-navbar>
+    </section>
   </div>
 </template>
 
@@ -146,6 +148,10 @@ export default {}
 .top-section .dropdown .btn {
   padding: 0 !important;
   color: #000 !important;
+}
+
+.main-header {
+  background: #fff;
 }
 
 @media (max-width: 769px) {

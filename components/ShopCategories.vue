@@ -131,12 +131,12 @@ export default {
   height: 520px;
 }
 
-.slick-slider .user-card:hover {
+/* .slick-slider .user-card:hover {
   background: linear-gradient(45deg, #0000005e, #0000005e),
     url(/person.jpg) no-repeat;
   background-size: cover;
   background-position: center;
-}
+} */
 
 .join-section {
   height: 240px;
@@ -204,6 +204,89 @@ export default {
 
 .slick-slider .user-2:hover {
   background: linear-gradient(45deg, #0000005e, #0000005e),url(/categories/main/footwear.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-3 {
+  background: url(/categories/main/babies.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-3:hover {
+  background: linear-gradient(45deg, #0000005e, #0000005e),url(/categories/main/babies.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-4 {
+  background: url(/categories/main/bags.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-4:hover {
+  background: linear-gradient(45deg, #0000005e, #0000005e),url(/categories/main/bags.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.slick-slider .user-5 {
+  background: url(/categories/main/jewelries.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-5:hover {
+  background: linear-gradient(45deg, #0000005e, #0000005e),url(/categories/main/jewelries.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-6 {
+  background: url(/categories/main/hair.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-6:hover {
+  background: linear-gradient(45deg, #0000005e, #0000005e),url(/categories/main/hair.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-7 {
+  background: url(/categories/main/art.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-7:hover {
+  background: linear-gradient(45deg, #0000005e, #0000005e),url(/categories/main/art.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-8 {
+  background: url(/categories/main/fabrics.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-8:hover {
+  background: linear-gradient(45deg, #0000005e, #0000005e),url(/categories/main/fabrics.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-9 {
+  background: url(/categories/main/headpiece.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.slick-slider .user-9:hover {
+  background: linear-gradient(45deg, #0000005e, #0000005e),url(/categories/main/headpiece.png) no-repeat;
   background-size: cover;
   background-position: center;
 }

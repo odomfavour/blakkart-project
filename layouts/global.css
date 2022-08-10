@@ -12,3 +12,8 @@
 html {
     font-family: "Verdana";
 }
+
+.container {
+    max-width: 90% !important;
+    margin: 0 auto;
+}
