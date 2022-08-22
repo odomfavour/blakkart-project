@@ -77,6 +77,7 @@
                   <b-icon icon="person-circle" class="mr-2"></b-icon>Account
                 </template>
                 <b-dropdown-item href="#">Profile</b-dropdown-item>
+                <b-dropdown-item href="/login">Log in</b-dropdown-item>
                 <b-dropdown-item href="#">Sign Out</b-dropdown-item>
               </b-nav-item-dropdown>
               <b-nav-item href="#" class="mr-3">
