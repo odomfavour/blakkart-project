@@ -1,7 +1,8 @@
 <template>
   <section>
     <div class="container">
-      <div class="my-5 checkout-forms">
+      <client-only>
+        <div class="my-5 checkout-forms">
         <b-tabs pills v-model="tabIndex">
           <b-tab active>
             <template #title>
@@ -740,6 +741,7 @@
           </b-tab>
         </b-tabs>
       </div>
+      </client-only>
     </div>
   </section>
 </template>

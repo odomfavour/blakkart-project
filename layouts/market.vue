@@ -230,9 +230,9 @@ export default {
   background: #fff;
 }
 
-.checkout-forms .nav-pills .nav-item:nth-child(1) {
+/* .checkout-forms .nav-pills .nav-item:nth-child(1) {
   display: none !important;
-}
+} */
 
 .checkout-forms .nav {
   width: 100% !important;
