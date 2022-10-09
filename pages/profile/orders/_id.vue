@@ -52,10 +52,10 @@
             </div>
             <div class="text-center">
               <div class="mb-2">
-                <button class="btn orange-btn">Buy again</button>
+                <nuxt-link class="btn orange-btn" :to="`/profile/orders/tracking/${order.order_number}`">TRACK ORDER</nuxt-link>
               </div>
               <div>
-                <button class="btn orange-outline-btn">SEE STATUS HISTORY</button>
+                <button class="btn orange-outline-btn">OPEN DISPUTE</button>
               </div>
             </div>
           </div>

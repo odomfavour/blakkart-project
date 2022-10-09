@@ -1,6 +1,8 @@
 <template>
   <section>
-    <div class="category-banner"></div>
+    <div class="category-banner d-flex justify-content-center align-items-center">
+        <h3 class="text-center text-white">MEN’S CLOTHINGS STORES</h3>
+    </div>
     <div class="pt-5">
       <div class="filter-display mb-2">
         <b-form-tags
@@ -19,19 +21,24 @@
             :key="product"
           >
             <div class="product-card">
-             <nuxt-link to="/product"> <img src="/product-image.png" alt=" product" class="img-fluid" />
+              <img src="/product-image.png" alt=" product" class="img-fluid" />
               <div
                 class="
                   d-flex
                   justify-content-between
-                  align-items-between
+                  align-items-center
                   px-3
                   pt-2
                 "
               >
-                <p class="mb-0">Ankara Jesu</p>
-                <p class="mb-0">CAD $200</p>
-              </div></nuxt-link>
+                <div>
+                  <h4>Ngozi Odunayo</h4>
+                  <p class="mb-0">Port Harcourt, Nigeria</p>
+                </div>
+                <div>
+                  <b-icon icon="heart"></b-icon>
+                </div>
+              </div>
               <hr />
               <div
                 class="d-flex justify-content-between align-items-between px-3"
@@ -44,8 +51,7 @@
                   class="p-0"
                 ></b-form-rating>
                 <div class="d-flex">
-                  <div class="mr-3"><b-icon icon="heart" role="button"></b-icon></div>
-                  <div><b-icon icon="handbag" role="button"></b-icon></div>
+                  <nuxt-link :to="'/market/designer/' + product" class="btn btn-primary" style="font-size: 12px;">VIEW STORE</nuxt-link>
                 </div>
               </div>
             </div>

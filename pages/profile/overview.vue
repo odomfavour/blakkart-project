@@ -16,10 +16,10 @@
             </div>
             <div class="col-md-7">
                 <div class="d-flex justify-content-between align-items-center">
-                    <div class="card-box text-center">
+                    <nuxt-link to="/profile/measurements" class="card-box text-center">
                         <b-icon icon="view-stacked"></b-icon>
                         <p class="text-uppercase">Measurements</p>
-                    </div>
+                    </nuxt-link>
                     <div class="card-box text-center">
                         <b-icon icon="person-lines-fill"></b-icon>
                         <p class="text-uppercase">Following</p>
@@ -32,10 +32,10 @@
                         <b-icon icon="view-stacked"></b-icon>
                         <p class="text-uppercase">Viewed</p>
                     </div>
-                    <div class="card-box text-center">
+                    <nuxt-link to="/profile/account-settings" class="card-box text-center">
                         <b-icon icon="gear"></b-icon>
                         <p class="text-uppercase">Setting</p>
-                    </div>
+                    </nuxt-link>
                 </div>
             </div>
         </div>
@@ -83,13 +83,13 @@
                     <div class="col-md-6">
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="text-uppercase mb-0">payment methods</p>
-                            <nuxt-link to="#" class="text-uppercase">view all <b-icon icon="chevron-right" class="ml-3"></b-icon></nuxt-link>
+                            <nuxt-link to="/profile/orders" class="text-uppercase">view all <b-icon icon="chevron-right" class="ml-3"></b-icon></nuxt-link>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="text-uppercase mb-0">shipping address</p>
-                            <nuxt-link to="#" class="text-uppercase">view all <b-icon icon="chevron-right" class="ml-3"></b-icon></nuxt-link>
+                            <nuxt-link to="/profile/shipping-address" class="text-uppercase">view all <b-icon icon="chevron-right" class="ml-3"></b-icon></nuxt-link>
                         </div>
                     </div>
                 </div>

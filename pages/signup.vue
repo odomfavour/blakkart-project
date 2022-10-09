@@ -11,7 +11,7 @@
         <div class="d-flex align-items-center justify-content-center">
           <div class="form-container">
             <div class="top-section">
-              <h5>Sign in using</h5>
+              <h5>Sign up using</h5>
               <div class="social-section">
                 <div class="text-center">
                   <nuxt-link to="#" class="social-link">
@@ -40,10 +40,38 @@
             </div>
 
             <div class="login-main">
-              <p class="text-mild main-intro">Fill in your details to <span class="text-black">Log in</span></p>
-              <form action="">
+              <p class="text-mild main-intro">Fill in your details to <span class="text-black">Sign up</span></p>
+              <form action="" @submit.prevent="SignupUser">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="firstName" class="form-label text-black"
+                        >First Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-input"
+                        id="firstName"
+                        placeholder="Enter your first name"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="lastName" class="form-label text-black"
+                        >Last Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-input"
+                        id="lastName"
+                        placeholder="Enter your last name"
+                      />
+                    </div>
+                  </div>
+                </div>
                 <div class="mb-3">
-                   <label for="email" class="form-label text-black">Email</label>
+                  <label for="email" class="form-label text-black">Email</label>
                   <input
                     type="email"
                     class="form-input"
@@ -51,8 +79,11 @@
                     placeholder="name@example.com"
                   />
                 </div>
+                
                 <div class="mb-3">
-                  <label for="password" class="form-label text-black">Enter Password</label>
+                  <label for="password" class="form-label text-black"
+                    >Enter Password</label
+                  >
                   <input
                     type="password"
                     class="form-input"
@@ -60,18 +91,30 @@
                     placeholder="Password"
                   />
                 </div>
+                <div class="mb-3">
+                  <label for="confirmPassword" class="form-label text-black"
+                    >Re-enter Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-input"
+                    id="confirmPassword"
+                    placeholder="Password"
+                  />
+                </div>
                 <div class="mb-3 d-flex justify-content-end">
-                  <nuxt-link to="#" class="text-black">Forgot Password?</nuxt-link>
+                  <p>By clicking on sign up, you agree with our <nuxt-link to="#" class="text-black"
+                    >Terms</nuxt-link> and <nuxt-link to="#" class="text-black"
+                    >Privacy Policy</nuxt-link>.</p>
                 </div>
                 <div class="mb-3">
                   <button class="black-btn">Join Blakkart Now</button>
                 </div>
                 <div>
-                 
                   <p class="pt-3 text-mild">
-                    Not registered?
-                    <nuxt-link to="/signup" class="text-oranged"
-                      >Sign up</nuxt-link
+                    Already registered?
+                    <nuxt-link to="/login" class="text-oranged"
+                      >Sign in</nuxt-link
                     >
                   </p>
                 </div>
@@ -87,14 +130,20 @@
 <script>
 export default {
   layout: 'plain',
+  methods: {
+    SignupUser() {
+      this.$router.push('/market')
+    }
+  }
 }
 </script>
+
 
 <style scoped>
 .image-section {
   width: 50%;
   min-height: 100vh;
-  background: url('/login.png') no-repeat;
+  background: url('/sigin.png') no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -102,8 +151,20 @@ export default {
 .form-section {
   width: 50%;
   height: 100vh;
-  overflow-y: auto;
   background-color: #fff;
+  overflow-y: scroll;
+}
+
+.back-btn {
+  width: 48px;
+  height: 48px;
+  background: #cccccc;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .back-btn-container {
@@ -172,18 +233,6 @@ export default {
 .or-border {
   width: 43%;
   background-color: #000;
-}
-
-.back-btn {
-  width: 48px;
-  height: 48px;
-  background: #cccccc;
-  border-radius: 50%;
-  padding: 12px;
-  font-size: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 @media (max-width: 769px) {

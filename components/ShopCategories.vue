@@ -7,7 +7,7 @@
         v-for="(pic, index) in categories"
         :key="index"
       >
-        <button class="btn-outline-main cat-btn">{{ pic.name }}</button>
+        <nuxt-link :to="`/market/${pic.link}`" class="btn-outline-main cat-btn text-center">{{ pic.name }}</nuxt-link>
       </div>
     </VueSlickCarousel>
   </section>
@@ -63,6 +63,7 @@ export default {
       categories: [
         {
           name: 'men',
+          link: 'men'
         },
         {
           name: 'women',
@@ -110,6 +111,15 @@ export default {
 .cat-btn {
   width: 196px !important;
   font-size: 12px;
+}
+
+.cat-btn {
+  text-decoration: none;
+}
+
+.cat-btn:hover {
+  color: #fad647;
+  text-decoration: none;
 }
 
 .slick-slider .user-card {

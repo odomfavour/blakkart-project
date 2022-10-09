@@ -2,7 +2,9 @@
   <section>
     <div class="container">
       <div class="d-flex align-items-center mb-5">
-        <nuxt-link to="#"> <b-icon icon="arrow-left"></b-icon></nuxt-link>
+        <nuxt-link to="/profile/overview">
+          <b-icon icon="arrow-left"></b-icon
+        ></nuxt-link>
         <p class="mb-0 text-uppercase ml-3">Payment methods</p>
       </div>
       <div class="row">
@@ -23,7 +25,7 @@
               </div>
             </div>
             <div class="d-flex justify-content-end">
-              <img src="/profile/Mastercard.png" class="img-fluid" alt="">
+              <img src="/profile/Mastercard.png" class="img-fluid" alt="" />
             </div>
           </b-card>
         </div>

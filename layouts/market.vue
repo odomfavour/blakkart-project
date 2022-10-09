@@ -7,76 +7,144 @@
           <div class="side-info-section px-2 pt-5">
             <div class="person-info text-center">
               <h2>Hi, <span class="text-orange">Ngozi</span></h2>
-              <p>
+             <div v-if="$route.path === '/market'">
+               <p>
                 Update your measurements to<br />
                 request custom order
               </p>
-              <div class="d-flex">
-                <div class="black-btn mr-2">MAKE A REQUEST</div>
-                <div class="black-btn">UPDATE PROFILE</div>
+              <div class="d-flex justify-content-center">
+                <nuxt-link
+                to="/profile/measurements"
+                  class="
+                    d-flex
+                    justify-content-center
+                    align-items-center
+                    orange-btn
+                  "
+                  style="font-size: 12px; padding: 10px 15px; cursor: pointer"
+                >
+                  UPDATE PROFILE
+                </nuxt-link>
+             </div>
+              </div>
+             <div v-else>
+               <p>
+                Need a style not listed here? <b>Create a custom request for the designer.</b>
+              </p>
+              <div class="d-flex justify-content-center">
+                <nuxt-link
+                to="/custom"
+                  class="
+                    d-flex
+                    justify-content-center
+                    align-items-center
+                    orange-btn
+                  "
+                  style="font-size: 12px; padding: 10px 15px; cursor: pointer"
+                >
+                  MAKE CUSTOM REQUEST
+                </nuxt-link>
+             </div>
               </div>
             </div>
             <div class="pt-5 filter-section">
               <p>Filter By:</p>
               <div class="pt-5">
                 <form>
-                  <label for="">STYLE</label>
-                  <b-form-group
-                    label="Using sub-components:"
-                    v-slot="{ ariaDescribedby }"
-                  >
-                    <b-form-checkbox-group
-                      id="checkbox-group-2"
-                      v-model="selectedStyles"
-                      :aria-describedby="ariaDescribedby"
-                      name="flavour-2"
-                      @change="addFilter"
-                    >
-                      <b-form-checkbox
-                        :value="style.name"
-                        v-for="style in styles"
-                        :key="style.id"
-                        >{{ style.name }} ({{ style.count }})</b-form-checkbox
+                  <section v-if="$route.path === '/market'">
+                    <div>
+                      <b-form-group
+                        label="LOCATION"
+                        v-slot="{ ariaDescribedby }"
                       >
-                    </b-form-checkbox-group>
-                  </b-form-group>
-                  <div class="pt-5">
-                    <label for="fabric">Fabrics</label>
-                    <b-form-group
-                      label="Using sub-components:"
-                      v-slot="{ ariaDescribedby }"
-                    >
-                      <b-form-checkbox-group
-                        id="checkbox-group-2"
-                        v-model="selectedFabrics"
-                        :aria-describedby="ariaDescribedby"
-                        name="flavour-2"
-                        @change="addFilter"
+                        <b-form-checkbox-group
+                          id="checkbox-group-2"
+                          v-model="selectedStyles"
+                          :aria-describedby="ariaDescribedby"
+                          name="flavour-2"
+                          @change="addFilter"
+                        >
+                          <b-form-checkbox
+                            :value="location.name"
+                            v-for="location in locations"
+                            :key="location.id"
+                            class="mb-2"
+                            >{{ location.name }} ({{
+                              location.count
+                            }})</b-form-checkbox
+                          >
+                        </b-form-checkbox-group>
+                      </b-form-group>
+                    </div>
+                    <div>
+                      <b-form-group label="GENDER" v-slot="{ ariaDescribedby }">
+                        <b-form-checkbox-group
+                          id="checkbox-group-2"
+                          v-model="selectedStyles"
+                          :aria-describedby="ariaDescribedby"
+                          name="flavour-2"
+                          @change="addFilter"
+                        >
+                          <b-form-checkbox
+                            :value="location.name"
+                            v-for="location in locations"
+                            :key="location.id"
+                            class="mb-2"
+                            >{{ location.name }} ({{
+                              location.count
+                            }})</b-form-checkbox
+                          >
+                        </b-form-checkbox-group>
+                      </b-form-group>
+                    </div>
+                  </section>
+                  <section v-if="$route.path !== '/market'">
+                    <div>
+                      <b-form-group label="STYLE" v-slot="{ ariaDescribedby }">
+                        <b-form-checkbox-group
+                          id="checkbox-group-2"
+                          v-model="selectedStyles"
+                          :aria-describedby="ariaDescribedby"
+                          name="flavour-2"
+                          @change="addFilter"
+                        >
+                          <b-form-checkbox
+                            :value="style.name"
+                            v-for="style in styles"
+                            :key="style.id"
+                            class="mb-2"
+                            >{{ style.name }} ({{
+                              style.count
+                            }})</b-form-checkbox
+                          >
+                        </b-form-checkbox-group>
+                      </b-form-group>
+                    </div>
+                    <div class="pt-5">
+                      <b-form-group
+                        label="Fabrics"
+                        v-slot="{ ariaDescribedby }"
                       >
-                        <b-form-checkbox
-                          :value="fabric.name"
-                          v-for="fabric in fabrics"
-                          :key="fabric.id"
-                          >{{ fabric.name }} ({{
-                            fabric.count
-                          }})</b-form-checkbox
-                        ><br />
-                      </b-form-checkbox-group>
-                    </b-form-group>
-                  </div>
-                  <!-- <div class="pt-5">
-                    <label for="fabric">Fabrics</label>
-                    <b-form-checkbox
-                      id="`fabric-${id}`"
-                      name="checkbox-1"
-                      value="accepted"
-                      class="mb-2"
-                      v-for="fabric in fabrics"
-                      :key="fabric.id"
-                    >
-                      {{ fabric.name }} ({{ fabric.count }})
-                    </b-form-checkbox>
-                  </div> -->
+                        <b-form-checkbox-group
+                          id="checkbox-group-2"
+                          v-model="selectedFabrics"
+                          :aria-describedby="ariaDescribedby"
+                          name="flavour-2"
+                          @change="addFilter"
+                        >
+                          <b-form-checkbox
+                            :value="fabric.name"
+                            v-for="fabric in fabrics"
+                            :key="fabric.id"
+                            class="mb-2"
+                            >{{ fabric.name }} ({{
+                              fabric.count
+                            }})</b-form-checkbox
+                          ><br />
+                        </b-form-checkbox-group>
+                      </b-form-group>
+                    </div>
+                  </section>
                 </form>
               </div>
             </div>
@@ -114,6 +182,18 @@ export default {
         { id: 3, name: 'Satin', count: 9 },
         { id: 4, name: 'Silk', count: 0 },
         { id: 5, name: 'Cotton', count: 5 },
+      ],
+      locations: [
+        { id: 1, name: 'Port Harcourt', count: 11 },
+        { id: 2, name: 'FCT', count: 11 },
+        { id: 3, name: 'Lagos', count: 11 },
+        { id: 4, name: 'Abeokuta', count: 11 },
+        { id: 5, name: 'Ogun State', count: 11 },
+        { id: 6, name: 'Ibadan', count: 11 },
+      ],
+      genders: [
+        { id: 1, name: 'Male', count: 11 },
+        { id: 1, name: 'Female', count: 11 },
       ],
       selectedStyles: [],
       selectedFabrics: [],
@@ -179,11 +259,16 @@ export default {
 }
 
 .checkout-section-heading {
-  width: 70%;
+  width: 90%;
   margin: 20px auto;
-  background: #000;
+  background: #eb542b;
   color: #fff;
   padding: 15px 0;
+}
+
+.checkout-section-heading h5 {
+  font-size: 18px !important;
+  font-weight: 400;
 }
 
 .checkout-section-heading ~ p {
@@ -247,7 +332,13 @@ export default {
     width: auto;
   }
 
-  .checkout-section-heading, .checkout-form-section, .checkout-section-heading ~ p {
+  .checkout-section-heading,
+  .checkout-form-section,
+  .checkout-section-heading ~ p {
+    width: 100%;
+  }
+
+  .checkout-cards-section {
     width: 100%;
   }
 }
