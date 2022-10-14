@@ -40,7 +40,9 @@
             </div>
 
             <div class="login-main">
-              <p class="text-mild main-intro">Fill in your details to <span class="text-black">Sign up</span></p>
+              <p class="text-mild main-intro">
+                Fill in your details to <span class="text-black">Sign up</span>
+              </p>
               <form action="" @submit.prevent="SignupUser">
                 <div class="row">
                   <div class="col-md-6">
@@ -79,7 +81,18 @@
                     placeholder="name@example.com"
                   />
                 </div>
-                
+                <div class="mb-3">
+                  <label for="country" class="form-label text-black"
+                    >Country</label
+                  ><br>
+                  <select
+                    class=""
+                    aria-label="Default select example"
+                  >
+                    <option selected>Select your Country</option>
+                    <option :value="country.name" v-for="(country, index) in countries" :key="index">{{country.name}}</option>
+                  </select>
+                </div>
                 <div class="mb-3">
                   <label for="password" class="form-label text-black"
                     >Enter Password</label
@@ -103,9 +116,13 @@
                   />
                 </div>
                 <div class="mb-3 d-flex justify-content-end">
-                  <p>By clicking on sign up, you agree with our <nuxt-link to="#" class="text-black"
-                    >Terms</nuxt-link> and <nuxt-link to="#" class="text-black"
-                    >Privacy Policy</nuxt-link>.</p>
+                  <p>
+                    By clicking on sign up, you agree with our
+                    <nuxt-link to="#" class="text-black">Terms</nuxt-link> and
+                    <nuxt-link to="#" class="text-black"
+                      >Privacy Policy</nuxt-link
+                    >.
+                  </p>
                 </div>
                 <div class="mb-3">
                   <button class="black-btn">Join Blakkart Now</button>
@@ -128,13 +145,19 @@
 </template>
 
 <script>
+import { allCountries } from '~/countries'
 export default {
   layout: 'plain',
+  data() {
+    return {
+      countries: allCountries,
+    }
+  },
   methods: {
     SignupUser() {
       this.$router.push('/market')
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -209,9 +232,9 @@ export default {
   margin-bottom: 10px;
 }
 
-.form-input,
+.form-input, .form-container select
 .social-btn {
-  width: 100%;
+  width: 100% !important;
   padding: 10px 19px;
 }
 

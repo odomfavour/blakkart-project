@@ -195,13 +195,14 @@
         </div>
       </div>
       <div
-          class="d-flex align-items-center justify-content-center empty-layout" v-else
-        >
-          <div class="text-center empty-inner">
-            <b-icon icon="clipboard"></b-icon>
-            <h6 class="mt-3">You have not added an item</h6>
-          </div>
+        class="d-flex align-items-center justify-content-center empty-layout"
+        v-else
+      >
+        <div class="text-center empty-inner">
+          <b-icon icon="clipboard"></b-icon>
+          <h6 class="mt-3">You have not added an item</h6>
         </div>
+      </div>
 
       <div v-if="items.length > 0">
         <div class="pt-5">
@@ -299,10 +300,60 @@
                       </div>
                     </div>
                   </div>
+                  <hr />
+                  <div class="mt-3 p-3" style="background: #fff">
+                    <h4 class="text-orange">Reviews & Ratings</h4>
+                    <div class="mt-4">
+                      <div
+                        class="d-flex review-card"
+                        v-for="item in 4"
+                        :key="item"
+                      >
+                        <div class="mr-3 text-center">
+                          <b-img
+                            v-bind="{
+                              blank: true,
+                              width: 30,
+                              height: 30,
+                              class: 'm1',
+                            }"
+                            rounded="circle"
+                            blank-color="#777"
+                            alt="Transparent image"
+                          ></b-img>
+                        </div>
+                        <div class="w-100">
+                          <div
+                            class="
+                              d-flex
+                              justify-content-between
+                              align-items-center
+                            "
+                          >
+                            <p class="mb-0">Ihiechi Okwelle</p>
+                            <div>
+                              <b-form-rating
+                                id="rating-inline"
+                                class="bg-lighted"
+                                inline
+                                no-border
+                                value="4"
+                                style=""
+                              ></b-form-rating>
+                            </div>
+                          </div>
+                          <p>
+                            Lorem ipsum dolor sit amet, conse ctetur adipiscing
+                            elit. ipsum dolo....
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </section>
               </div>
               <div class="col-md-6">
-                <div>
+                <div style="background: #fff" class="p-3">
                   <div>
                     <b-form-rating
                       id="rating-inline"
@@ -319,6 +370,22 @@
                     enim nec urna ullamcorper et amet dictumst. Nibh nisl dolor,
                     vulputate viverra risus vulputate. Accumsan.
                   </p>
+                  <div class="my-3">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div
+                          style="background: #f4f4f4; border-radius: 12px"
+                          class="p-3"
+                        >
+                          <div class="d-flex align-items-center py-2">
+                            <p class="mr-2 mb-0 text-orange">NGN</p>
+                            <h4 class="mb-0">5,000</h4>
+                          </div>
+                          <p>Available discount 10%</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="mb-3">
                     <b-form-group
                       label="Available sizes"
@@ -378,55 +445,6 @@
                       </div>
                     </div>
                   </div>
-                  <div class="mt-3">
-                    <h4>Reviews & Ratings</h4>
-                    <div class="mt-5">
-                      <div
-                        class="d-flex review-card"
-                        v-for="item in 4"
-                        :key="item"
-                      >
-                        <div class="mr-3 text-center">
-                          <b-img
-                            v-bind="{
-                              blank: true,
-                              width: 30,
-                              height: 30,
-                              class: 'm1',
-                            }"
-                            rounded="circle"
-                            blank-color="#777"
-                            alt="Transparent image"
-                          ></b-img>
-                        </div>
-                        <div class="w-100">
-                          <div
-                            class="
-                              d-flex
-                              justify-content-between
-                              align-items-center
-                            "
-                          >
-                            <p class="mb-0">Ihiechi Okwelle</p>
-                            <div>
-                              <b-form-rating
-                                id="rating-inline"
-                                class="bg-lighted"
-                                inline
-                                no-border
-                                value="4"
-                                style=""
-                              ></b-form-rating>
-                            </div>
-                          </div>
-                          <p>
-                            Lorem ipsum dolor sit amet, conse ctetur adipiscing
-                            elit. ipsum dolo....
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -447,7 +465,7 @@ export default {
       sizes: ['L', 'XL', 'XXL'],
       isPlain: true,
       addItem: false,
-      items: []
+      items: [],
     }
   },
   methods: {
@@ -541,10 +559,5 @@ export default {
 
 .top-right {
   right: 0;
-}
-
-.review-card {
-  border-bottom: 0.5px solid #dddddd;
-  padding: 20px 0;
 }
 </style>

@@ -32,8 +32,8 @@
                   </b-dropdown>
                 </li>
                 <li>
-                  <a href="#" class="btn btn-dark text-white mb-0"
-                    >Become a Seller</a
+                  <nuxt-link to="/seller/signup" class="btn btn-dark text-white mb-0"
+                    >Become a Seller</nuxt-link
                   >
                 </li>
               </ul>

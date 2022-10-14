@@ -14,7 +14,7 @@
             <div class="sidebar">
               <ul class="seller-links">
                 <li><nuxt-link to="/seller" exact><dashboard-icon/> Overview</nuxt-link></li>
-                <li><nuxt-link to="/sellers/items" exact><hand-coin class="mr-3"/> Items</nuxt-link></li>
+                <li><nuxt-link to="/seller/items" exact><hand-coin class="mr-3"/> Items</nuxt-link></li>
                 <li><nuxt-link to="/seller/orders" exact> <orders-icon/> Orders</nuxt-link></li>
                 <li><nuxt-link to="/seller/chats" exact><chat-icon/> Chats</nuxt-link></li>
                 <li><nuxt-link to="/seller/analytics" exact><analytics-icon/> Analytics</nuxt-link></li>
@@ -61,15 +61,16 @@ export default {
   position: relative;
 }
 .sidebar-section .sidebar {
-  width: 200px;
+  width: 250px;
   min-height: 100vh ;
   position: fixed;
 }
 
 .main-box {
-  width: calc(100% - 200px);
+  width: calc(100% - 250px);
   background: rgba(235, 61, 14, 0.03);
-  margin-left: 200px;
+  margin-left: 250px;
+  padding: 32px;
 }
 
 .sidebar-open .sidebar-section {
