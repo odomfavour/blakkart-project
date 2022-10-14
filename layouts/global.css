@@ -17,3 +17,37 @@ html {
     max-width: 90% !important;
     margin: 0 auto;
 }
+
+.text-black {
+    color: #1F1F1F;
+}
+
+.text-oranged {
+    color: #EB3D0E;
+}
+
+.text-mild {
+    color: #6E6E6E;
+}
+
+.btn-outline-orange-sq {
+    border: 1px solid #EB3D0E;
+    background: #fff;
+    padding: 10px 0;
+}
+
+.btn-filled-orange-sq {
+    background: #EB3D0E;
+    color: white;
+    border: 1px solid #EB3D0E;
+    padding: 10px 20px;
+}
+
+.review-card {
+    border-bottom: 0.5px solid #dddddd;
+    padding: 20px 0;
+  }
+
+  .review-card svg {
+    color: #EB3D0E;
+  }

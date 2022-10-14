@@ -4,6 +4,7 @@
     <ShopNow />
     <div class="shopping-display">
       <ShopCategories />
+      <Join/>
     </div>
   </section>
 </template>

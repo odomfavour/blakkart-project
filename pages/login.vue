@@ -3,58 +3,76 @@
     <div class="image-section"></div>
     <div class="form-section">
       <div class="p-lg-5 p-3">
-        <div class="mb-5">
-          <nuxt-link to="/" class="text-dark">
+        <div class="mb-5 back-btn-container">
+          <nuxt-link to="/" class="text-dark back-btn">
             <b-icon icon="arrow-left"></b-icon>
-            <span>Back</span>
           </nuxt-link>
         </div>
         <div class="d-flex align-items-center justify-content-center">
           <div class="form-container">
-            <h3 class="text-center">Welcome Back</h3>
-            <div class="social-section">
-              <div class="px-4 py-3">
-                <div class="mb-2">
-                  <button class="social-btn">Continue with Google</button>
+            <div class="top-section">
+              <h5>Sign in using</h5>
+              <div class="social-section">
+                <div class="text-center">
+                  <nuxt-link to="#" class="social-link">
+                    <img src="/google.png" alt="" class="img-fluid"
+                  /></nuxt-link>
+                  <p>GMAIL</p>
                 </div>
-                <div class="mb-2">
-                  <button class="social-btn facebook-btn">
-                    <span><b-icon icon="facebook"></b-icon></span>
-                    Continue with Facebook
-                  </button>
+                <div class="text-center">
+                  <nuxt-link to="#" class="social-link">
+                    <img src="/mail.png" alt="" class="img-fluid"
+                  /></nuxt-link>
+                  <p>EMAIL</p>
+                </div>
+                <div class="text-center">
+                  <nuxt-link to="#" class="social-link">
+                    <img src="/facebook.png" alt="" class="img-fluid"
+                  /></nuxt-link>
+                  <p>FACEBOOK</p>
                 </div>
               </div>
+              <div class="d-flex">
+                <hr class="or-border" />
+                <span class="or-text">or</span>
+                <hr class="or-border" />
+              </div>
             </div>
-            <div class="d-flex">
-              <hr class="or-border" />
-              <span class="or-text">or</span>
-              <hr class="or-border" />
-            </div>
-            <div class="px-4 py-3">
+
+            <div class="login-main">
+              <p class="text-mild main-intro">Fill in your details to <span class="text-black">Log in</span></p>
               <form action="">
                 <div class="mb-3">
+                   <label for="email" class="form-label text-black">Email</label>
                   <input
                     type="email"
                     class="form-input"
                     id="email"
-                    placeholder="Email Address"
+                    placeholder="name@example.com"
                   />
                 </div>
                 <div class="mb-3">
+                  <label for="password" class="form-label text-black">Enter Password</label>
                   <input
-                    type="email"
+                    type="password"
                     class="form-input"
-                    id="email"
+                    id="password"
                     placeholder="Password"
                   />
                 </div>
-                <div class="mb-3 d-flex justify-content-center">
-                  <button class="black-btn">Sign In</button>
+                <div class="mb-3 d-flex justify-content-end">
+                  <nuxt-link to="#" class="text-black">Forgot Password?</nuxt-link>
                 </div>
-                <div class="text-center">
-                  <a href="#">Forgot Password?</a>
-                  <p class="pt-3">
-                    New user? <nuxt-link to="/signin" class="text-danger">Sign Up</nuxt-link>
+                <div class="mb-3">
+                  <button class="black-btn">Join Blakkart Now</button>
+                </div>
+                <div>
+                 
+                  <p class="pt-3 text-mild">
+                    Not registered?
+                    <nuxt-link to="/signup" class="text-oranged"
+                      >Sign up</nuxt-link
+                    >
                   </p>
                 </div>
               </form>
@@ -83,13 +101,51 @@ export default {
 
 .form-section {
   width: 50%;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.back-btn-container {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.login-main .main-intro {
+  font-size: 14px;
 }
 
 .form-container {
-  width: 55%;
-  min-height: 400px;
+  width: 75%;
+}
+
+.form-container .top-section {
+  width: 60%;
+}
+
+.form-container h5 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.social-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-section p {
+  font-size: 12px;
+}
+
+.social-section .social-link {
+  height: 64px;
+  width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 .form-input,
@@ -116,6 +172,18 @@ export default {
 .or-border {
   width: 43%;
   background-color: #000;
+}
+
+.back-btn {
+  width: 48px;
+  height: 48px;
+  background: #cccccc;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 769px) {
