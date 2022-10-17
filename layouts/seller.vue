@@ -2,33 +2,60 @@
   <section class="sellers-section">
     <div class="pt-5">
       <div class="d-flex shell">
-          <div class="sidebar-section">
-            <div class="d-flex justify-content-end mb-3 d-lg-none">
-              <b-icon
-                icon="x-lg"
-                role="button"
-                @click="toggleSidebar"
-                class="text-danger"
-              ></b-icon>
-            </div>
-            <div class="sidebar">
-              <ul class="seller-links">
-                <li><nuxt-link to="/seller" exact><dashboard-icon/> Overview</nuxt-link></li>
-                <li><nuxt-link to="/seller/items" exact><hand-coin class="mr-3"/> Items</nuxt-link></li>
-                <li><nuxt-link to="/seller/orders" exact> <orders-icon/> Orders</nuxt-link></li>
-                <li><nuxt-link to="/seller/chats" exact><chat-icon/> Chats</nuxt-link></li>
-                <li><nuxt-link to="/seller/analytics" exact><analytics-icon/> Analytics</nuxt-link></li>
-                <li><nuxt-link to="/seller/earnings" exact><earning-icon/> Earnings</nuxt-link></li>
-              </ul>
-            </div>
+        <div class="sidebar-section">
+          <div class="d-flex justify-content-end mb-3 d-lg-none">
+            <b-icon
+              icon="x-lg"
+              role="button"
+              @click="toggleSidebar"
+              class="text-danger"
+            ></b-icon>
           </div>
-          <div class="main-box">
-            <!-- <div class="container">
-            <button class="btn btn-orange" @click="toggleSidebar"><b-icon icon="chevron-double-right"></b-icon></button>
-           </div> -->
-            <Nuxt />
+          <div class="sidebar">
+            <ul class="seller-links">
+              <li>
+                <nuxt-link to="/seller" exact
+                  ><dashboard-icon /> Overview</nuxt-link
+                >
+              </li>
+              <li>
+                <nuxt-link to="/seller/items" exact
+                  ><hand-coin class="mr-3" /> Items</nuxt-link
+                >
+              </li>
+              <li>
+                <nuxt-link to="/seller/orders" exact>
+                  <orders-icon /> Orders</nuxt-link
+                >
+              </li>
+              <li>
+                <nuxt-link to="/seller/chats" exact
+                  ><chat-icon /> Chats</nuxt-link
+                >
+              </li>
+              <li>
+                <nuxt-link to="/seller/analytics" exact
+                  ><analytics-icon /> Analytics</nuxt-link
+                >
+              </li>
+              <li>
+                <nuxt-link to="/seller/earnings" exact
+                  ><earning-icon /> Earnings</nuxt-link
+                >
+              </li>
+            </ul>
           </div>
         </div>
+        <div class="main-box">
+          <button class="p-1 mb-2 d-md-none d-block" @click="toggleSidebar">
+            <b-icon icon="chevron-double-right"></b-icon>
+          </button>
+          <!-- <div class="container">
+            <button class="btn btn-orange" @click="toggleSidebar"><b-icon icon="chevron-double-right"></b-icon></button>
+           </div> -->
+          <Nuxt />
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -41,7 +68,14 @@ import AnalyticsIcon from '@/components/Icons/AnalyticsIcon.vue'
 import EarningIcon from '@/components/Icons/EarningIcon.vue'
 import DashboardIcon from '@/components/Icons/DashboardIcon.vue'
 export default {
-  components: { HandCoin, OrdersIcon, ChatIcon, AnalyticsIcon, EarningIcon, DashboardIcon },
+  components: {
+    HandCoin,
+    OrdersIcon,
+    ChatIcon,
+    AnalyticsIcon,
+    EarningIcon,
+    DashboardIcon,
+  },
   data() {
     return {
       value: 4,
@@ -51,8 +85,8 @@ export default {
     toggleSidebar() {
       console.log('heee')
       document.body.classList.toggle('sidebar-open')
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -62,14 +96,14 @@ export default {
 }
 .sidebar-section .sidebar {
   width: 250px;
-  min-height: 100vh ;
-  position: fixed;
+  min-height: 100vh;
+  /* position: fixed; */
 }
 
 .main-box {
   width: calc(100% - 250px);
   background: rgba(235, 61, 14, 0.03);
-  margin-left: 250px;
+  /* margin-left: 250px; */
   padding: 32px;
 }
 
@@ -77,7 +111,7 @@ export default {
   display: block;
   z-index: 9999;
 }
-.sidebar-section  {
+.sidebar-section {
   /* display: none; */
   padding-top: 32px;
 }
@@ -86,16 +120,16 @@ export default {
   padding-left: 0;
 }
 .sidebar-section .sidebar ul li {
-    background: #FFFFFF;
+  background: #ffffff;
   display: block;
 }
 .sidebar-section .sidebar .seller-links li a:hover {
-    background: rgba(235, 61, 14, 0.03);
-    cursor: pointer;
+  background: rgba(235, 61, 14, 0.03);
+  cursor: pointer;
 }
 
 .sidebar-section .sidebar ul li a.nuxt-link-exact-active {
- background: rgba(235, 61, 14, 0.03);
+  background: rgba(235, 61, 14, 0.03);
 }
 
 .sidebar-section .sidebar ul li a {
@@ -110,7 +144,6 @@ export default {
   border-right: 0;
   border-left: 0;
   border-bottom: 0.2px solid #ccc;
-
 }
 
 .sidebar-section .sidebar ul li a:hover svg {
@@ -255,6 +288,23 @@ display: none !important;
 @media (max-width: 426px) {
   .main-box {
     width: 100%;
+    margin-left: 0;
+  }
+
+  .sidebar-section {
+    display: none;
+  }
+
+  .sidebar-open .sidebar-section {
+    position: absolute;
+    left: 0;
+    background: #fff;
+    height: 100vh !important;
+    top: 0;
+  }
+
+  .sidebar-open .sidebar-section .sidebar {
+    height: 100%;
   }
 
   .main-box .container {
@@ -266,19 +316,13 @@ display: none !important;
     width: 100%;
   }
 
-  .sidebar-open .sidebar-section {
-    position: absolute;
-    left: 0;
-    background: #fff;
-    height: 100vh !important;
-  }
-
-  .sidebar-open .sidebar-section .sidebar {
-    height: 100%;
-  }
-
   .sidebar-open .sidebar-section ul {
     padding-left: 0;
+  }
+
+  .sidebar-section {
+    /* display: none; */
+    padding-top: 0px;
   }
 }
 </style>
