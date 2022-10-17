@@ -5,8 +5,13 @@
       <div class="container">
         <div class="d-flex shell">
           <div class="sidebar-section">
-            <div class="d-flex justify-content-end mb-3 d-lg-none">
-              <b-icon icon="x-lg" role="button" @click="toggleSidebar" class="text-danger"></b-icon>
+            <div class="d-flex justify-content-end mb-3 d-lg-none p-2">
+              <b-icon
+                icon="x-lg"
+                role="button"
+                @click="toggleSidebar"
+                class="text-danger"
+              ></b-icon>
             </div>
             <div class="sidebar">
               <ul>
@@ -14,7 +19,9 @@
                   <nuxt-link to="/profile/overview" exact>overview</nuxt-link>
                 </li>
                 <li><nuxt-link to="/profile/orders">orders</nuxt-link></li>
-                <li><nuxt-link to="/profile/measurements">measurements</nuxt-link></li>
+                <li>
+                  <nuxt-link to="/profile/measurements">measurements</nuxt-link>
+                </li>
                 <li>
                   <nuxt-link to="/profile/payment-methods"
                     >payment methods</nuxt-link
@@ -25,9 +32,21 @@
                     >shipping address</nuxt-link
                   >
                 </li>
-                <li><nuxt-link to="/profile/message-center">message center</nuxt-link></li>
-                <li><nuxt-link to="/profile/account-settings">account settings</nuxt-link></li>
-                <li><nuxt-link to="/profile/support-center">support center</nuxt-link></li>
+                <li>
+                  <nuxt-link to="/profile/message-center"
+                    >message center</nuxt-link
+                  >
+                </li>
+                <li>
+                  <nuxt-link to="/profile/account-settings"
+                    >account settings</nuxt-link
+                  >
+                </li>
+                <li>
+                  <nuxt-link to="/profile/support-center"
+                    >support center</nuxt-link
+                  >
+                </li>
                 <li>
                   <div class="text-center">
                     <button class="btn orange-btn">logout</button>
@@ -37,9 +56,11 @@
             </div>
           </div>
           <div class="main-box">
-           <div class="container">
-            <button class="btn btn-orange" @click="toggleSidebar"><b-icon icon="chevron-double-right"></b-icon></button>
-           </div>
+            <div class="container">
+              <button class="p-1 mb-2 d-md-none d-block" @click="toggleSidebar">
+                <b-icon icon="chevron-double-right"></b-icon>
+              </button>
+            </div>
             <Nuxt />
           </div>
         </div>
@@ -47,10 +68,14 @@
     </div>
     <div class="my-5">
       <div class="container">
-        <div class="px-5">
+        <div class="px-lg-5 px-2">
           <h5 class="mb-3">Items Handpicked For You</h5>
           <div class="row">
-            <div class="col-md-3" v-for="product in 4" :key="product">
+            <div
+              class="col-lg-3 col-md-4 mb-3"
+              v-for="product in 4"
+              :key="product"
+            >
               <div class="product-card">
                 <img
                   src="/product-image.png"
@@ -106,17 +131,16 @@ export default {
     toggleSidebar() {
       console.log('heee')
       document.body.classList.toggle('sidebar-open')
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style scoped>
-
 .shell {
   position: relative;
 }
-.sidebar-section .sidebar {
+.sidebar-section {
   width: 250px;
 }
 
@@ -124,14 +148,11 @@ export default {
   width: calc(100% - 250px);
 }
 
-
 .sidebar-open .sidebar-section {
   display: block;
   z-index: 9999;
 }
-.sidebar-section  {
-  display: none;
-}
+
 .sidebar-section .sidebar ul {
   list-style: none;
 }
@@ -159,7 +180,6 @@ export default {
   display: block;
   cursor: pointer;
 }
-
 
 .item-showbox {
   min-height: 115px;
@@ -227,7 +247,8 @@ export default {
   display: none !important;
 } */
 
-.orders-tab .nav-pills .nav-link.active, .measurements-tab .nav-pills .nav-link.active {
+.orders-tab .nav-pills .nav-link.active,
+.measurements-tab .nav-pills .nav-link.active {
   background: #241c1c !important;
   color: #fff !important;
 }
@@ -252,7 +273,7 @@ export default {
 }
 
 .checked-green svg {
-  fill: #2E7D32;
+  fill: #2e7d32;
   font-size: 40px;
 }
 
@@ -269,7 +290,7 @@ export default {
   content: '';
   width: 2px;
   min-height: 60px;
-  background: #2E7D32;
+  background: #2e7d32;
   position: absolute;
   top: 40px;
   left: 20px;
@@ -298,7 +319,7 @@ display: none !important;
 
 .account-section .nav-pills .nav-link.active {
   background: #f4f4f4 !important;
-  border-left: 4px solid #EB542B !important;
+  border-left: 4px solid #eb542b !important;
 }
 
 .account-section .nav-pills .nav-link {
@@ -307,9 +328,27 @@ display: none !important;
 
 .account-section .nav-pills .nav-link:hover {
   background: #f4f4f4 !important;
-  border-left: 4px solid #EB542B !important;
+  border-left: 4px solid #eb542b !important;
 }
 
+@media (max-width: 769px) {
+  .sidebar-open .sidebar-section {
+    /* display: none; */
+    position: fixed;
+    top: 50px;
+    z-index: 999999;
+    background: #fff;
+    height: 100vh;
+  }
+
+  .sidebar-section {
+    display: none;
+  }
+
+  .main-box {
+    width: 100%;
+  }
+}
 
 @media (max-width: 426px) {
   .main-box {
@@ -332,9 +371,9 @@ display: none !important;
     height: 100vh !important;
   }
 
-   .sidebar-open .sidebar-section .sidebar {
+  .sidebar-open .sidebar-section .sidebar {
     height: 100%;
-   }
+  }
 
   .sidebar-open .sidebar-section ul {
     padding-left: 0;

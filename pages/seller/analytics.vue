@@ -4,7 +4,15 @@
       <div class="col-md-5">
         <div class="p-3" style="background: #f9f9f9">
           <div class="mb-5">
-            <div class="d-flex mb-2 justify-content-between align-items-center">
+            <div
+              class="
+                d-flex
+                mb-2
+                justify-content-lg-between
+                align-items-lg-center
+                flex-md-row flex-column
+              "
+            >
               <p class="mb-0 text-orange">Most Popular item(s)</p>
               <div class="d-flex sort-input align-items-center">
                 <p class="mb-0" style="font-size: 14px">select by</p>
@@ -63,8 +71,13 @@
                 <div
                   class="d-flex justify-content-between align-items-center p-3"
                 >
-                  <p class="mb-0">23.6K <b-icon icon="eye-fill" style="color: #2E7D32;"></b-icon></p>
-                  <p class="mb-0"><b-icon icon="tag-fill" style="color: #EB542B;"></b-icon>237</p>
+                  <p class="mb-0">
+                    23.6K
+                    <b-icon icon="eye-fill" style="color: #2e7d32"></b-icon>
+                  </p>
+                  <p class="mb-0">
+                    <b-icon icon="tag-fill" style="color: #eb542b"></b-icon>237
+                  </p>
                   <div>
                     <b-form-rating
                       id="rating-inline"
@@ -80,7 +93,15 @@
             </div>
           </div>
           <div class="mt-5">
-            <div class="d-flex mb-2 justify-content-between align-items-center">
+            <div
+              class="
+                d-flex
+                mb-2
+                justify-content-lg-between
+                align-items-lg-center
+                flex-md-row flex-column
+              "
+            >
               <p class="mb-0 text-orange">Most Popular item(s)</p>
               <div class="d-flex sort-input align-items-center">
                 <p class="mb-0" style="font-size: 14px">select by</p>
@@ -100,7 +121,15 @@
               <div class="card">
                 <div class="p-3">
                   <img src="/seller/item-pic.png" class="w-100" alt="" />
-                  <div class="d-flex justify-content-between mt-2 bracket">
+                  <div
+                    class="
+                      d-flex
+                      justify-content-between
+                      flex-md-row flex-column
+                      mt-2
+                      bracket
+                    "
+                  >
                     <div
                       class="d-flex align-items-center"
                       style="
@@ -139,8 +168,16 @@
                 <div
                   class="d-flex justify-content-between align-items-center p-3"
                 >
-                  <p class="mb-0">23.6K <b-icon icon="eye-fill" style="color: #2E7D32;"></b-icon></p>
-                  <p class="mb-0"><b-icon icon="tag-fill" style="color: #EB542B;"></b-icon>237</p>
+                  <div class="d-flex justify-content-between">
+                    <p class="mb-0">
+                      23.6K
+                      <b-icon icon="eye-fill" style="color: #2e7d32"></b-icon>
+                    </p>
+                    <p class="mb-0">
+                      <b-icon icon="tag-fill" style="color: #eb542b"></b-icon
+                      >237
+                    </p>
+                  </div>
                   <div>
                     <b-form-rating
                       id="rating-inline"
@@ -162,9 +199,23 @@
           <section style="background: #f9f9f9">
             <div class="card">
               <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
+                <div
+                  class="
+                    d-flex
+                    justify-content-lg-between
+                    align-items-lg-center
+                    flex-md-row flex-column
+                  "
+                >
                   <p class="mb-0">Analytics</p>
-                  <div class="d-flex align-items-center time-box">
+                  <div
+                    class="
+                      d-flex
+                      align-items-center
+                      time-box
+                      flex-md-row flex-column
+                    "
+                  >
                     <select
                       class="form-control"
                       aria-label="Default select example"
@@ -254,7 +305,14 @@
           <div class="mt-5">
             <div class="card">
               <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
+                <div
+                  class="
+                    d-flex
+                    justify-content-between
+                    align-items-center
+                    flex-md-row flex-column
+                  "
+                >
                   <div class="d-flex align-items-center">
                     <h4 class="mr-2 mb-0 text-orange">77.6k</h4>
                     <h5 class="mb-0">Total Followers</h5>
@@ -270,7 +328,12 @@
                 <div class="card">
                   <div class="card-body">
                     <div
-                      class="d-flex justify-content-between align-items-center"
+                      class="
+                        d-flex
+                        justify-content-lg-between
+                        align-items-lg-center
+                        flex-md-row flex-column
+                      "
                     >
                       <div class="d-flex align-items-center">
                         <div class="mr-2 text-center">
@@ -299,14 +362,7 @@
             </div>
           </div>
           <div class="mt-5">
-            <div
-              class="text-white"
-              style="
-                background: #eb542b;
-                border-bottom: 0.5px solid #dddddd;
-                padding: 24px;
-              "
-            >
+            <div class="text-white review-header">
               <h5>Reviews & Ratings</h5>
             </div>
             <div class="reviews-section">
@@ -389,5 +445,32 @@ export default {
 
 .bracket {
   width: 70%;
+}
+.review-header {
+  background: #eb542b;
+  border-bottom: 0.5px solid #dddddd;
+  padding: 24px;
+}
+
+@media (max-width: 426px) {
+  .sort-input {
+    width: 90%;
+  }
+
+  .time-box {
+    width: 100%;
+  }
+
+  .time-box select {
+    width: 100%;
+  }
+
+  .countries-section {
+    padding: 0 10px;
+  }
+
+  .bracket {
+    width: 100%;
+  }
 }
 </style>
