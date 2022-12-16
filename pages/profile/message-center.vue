@@ -7,7 +7,7 @@
         ></nuxt-link>
         <p class="mb-0 text-uppercase ml-3">Payment methods</p>
       </div>
-      <div class="mt-5 px-5">
+      <div class="mt-5 px-md-5">
         <div class="message-center-heading">
           <h5 class="mb-0">BLAKKART SUPPORT</h5>
         </div>
@@ -29,7 +29,7 @@
           </div>
           <div class="buyer-response">
             <div class="d-flex buyer-content">
-                 <div class="convo-box mr-2">
+              <div class="convo-box mr-2">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. In
                   impedit incidunt, quos magni vero corrupti, magnam ad
@@ -40,15 +40,14 @@
               <div class="image-box">
                 <img src="/support.png" class="img-fluid" alt="" />
               </div>
-             
             </div>
           </div>
           <div class="chat-input-box d-flex">
             <div class="input-section mr-1">
-                <textarea name="" id="" rows="2" class="form-control"></textarea>
+              <textarea name="" id="" rows="2" class="form-control"></textarea>
             </div>
             <div class="send-icon" role="button">
-                <b-icon icon="cursor-fill" font-scale="1.5"></b-icon>
+              <b-icon icon="cursor-fill" font-scale="1.5"></b-icon>
             </div>
           </div>
         </div>
@@ -80,13 +79,13 @@ export default {
 }
 
 .buyer-response {
-    display: flex;
-    justify-content: end;
+  display: flex;
+  justify-content: end;
 }
 
 .buyer-response .buyer-content {
-    width: 60%;
-    margin-bottom: 30px;
+  width: 60%;
+  margin-bottom: 30px;
 }
 
 .buyer-response .image-box {
@@ -94,28 +93,51 @@ export default {
 }
 
 .buyer-response .convo-box {
-  background: #EB542B;
+  background: #eb542b;
   border-radius: 30px 0px 0px 0px;
   padding: 24px 36px;
   color: #fff;
 }
 
 .message-center-heading {
- 
- 
-    background: #eb542b;
-    color: #fff;
-    padding: 15px 20px;
-    margin: 20px 0;
+  background: #eb542b;
+  color: #fff;
+  padding: 15px 20px;
+  margin: 20px 0;
 }
 
 .chat-input-box .input-section {
-    width: 95%;
+  width: 95%;
 }
 
 .chat-input-box .send-icon {
-    transform: rotate(35deg);
-    width: 5%;
-    padding: 0;
+  transform: rotate(35deg);
+  width: 5%;
+  padding: 0;
+}
+
+@media (max-width: 426px) {
+  .message-center-heading h5 {
+    font-size: 14px;
+  }
+
+  .buyer-response .convo-box,
+  .blakart-support .convo-box {
+    padding: 10px;
+  }
+  .buyer-response .convo-box p,
+  .blakart-support .convo-box p {
+    font-size: 14px;
+  }
+
+  .buyer-response .image-box,
+  .blakart-support .image-box {
+    width: 100%;
+  }
+
+  .buyer-response .buyer-content,
+  .blakart-support {
+    width: 70%;
+  }
 }
 </style>

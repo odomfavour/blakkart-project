@@ -74,7 +74,7 @@ export default {
 <style scoped>
 .image-add {
   height: 100px;
-  background: rgba(235, 61, 14, 0.1);
+  background: rgba(235, 121, 14, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;

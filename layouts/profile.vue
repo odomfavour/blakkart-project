@@ -1,11 +1,11 @@
 <template>
-  <section>
+  <section class="profile">
     <Header />
     <div class="mt-5">
       <div class="container">
         <div class="d-flex shell">
           <div class="sidebar-section">
-            <div class="d-flex justify-content-end mb-3 d-lg-none p-2">
+            <div class="d-flex justify-content-end mb-3 d-lg-none px-3 pt-3">
               <b-icon
                 icon="x-lg"
                 role="button"
@@ -15,37 +15,8 @@
             </div>
             <div class="sidebar">
               <ul>
-                <li>
-                  <nuxt-link to="/profile/overview" exact>overview</nuxt-link>
-                </li>
-                <li><nuxt-link to="/profile/orders">orders</nuxt-link></li>
-                <li>
-                  <nuxt-link to="/profile/measurements">measurements</nuxt-link>
-                </li>
-                <li>
-                  <nuxt-link to="/profile/payment-methods"
-                    >payment methods</nuxt-link
-                  >
-                </li>
-                <li>
-                  <nuxt-link to="/profile/shipping-address"
-                    >shipping address</nuxt-link
-                  >
-                </li>
-                <li>
-                  <nuxt-link to="/profile/message-center"
-                    >message center</nuxt-link
-                  >
-                </li>
-                <li>
-                  <nuxt-link to="/profile/account-settings"
-                    >account settings</nuxt-link
-                  >
-                </li>
-                <li>
-                  <nuxt-link to="/profile/support-center"
-                    >support center</nuxt-link
-                  >
+                <li v-for="link in profileLinks" :key="link.id">
+                  <nuxt-link :to="link.url" exact>{{link.name}}</nuxt-link>
                 </li>
                 <li>
                   <div class="text-center">
@@ -66,64 +37,28 @@
         </div>
       </div>
     </div>
-    <div class="my-5">
-      <div class="container">
-        <div class="px-lg-5 px-2">
-          <h5 class="mb-3">Items Handpicked For You</h5>
-          <div class="row">
-            <div
-              class="col-lg-3 col-md-4 mb-3"
-              v-for="product in 4"
-              :key="product"
-            >
-              <div class="product-card">
-                <img
-                  src="/product-image.png"
-                  alt=" product"
-                  class="img-fluid"
-                />
-                <div
-                  class="
-                    d-flex
-                    justify-content-between
-                    align-items-between
-                    pt-2
-                  "
-                >
-                  <p class="mb-0">Ankara Jesu</p>
-                  <p class="mb-0">CAD $200</p>
-                </div>
-                <hr />
-                <div class="d-flex justify-content-between align-items-between">
-                  <b-form-rating
-                    v-model="value"
-                    readonly
-                    no-border
-                    size="sm"
-                    class="p-0"
-                  ></b-form-rating>
-                  <div class="d-flex">
-                    <div class="mr-3">
-                      <b-icon icon="heart" role="button"></b-icon>
-                    </div>
-                    <div><b-icon icon="handbag" role="button"></b-icon></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <featured-designers />
     <Footer />
   </section>
 </template>
 
 <script>
+import FeaturedDesigners from '~/components/FeaturedDesigners.vue'
 export default {
+  components: { FeaturedDesigners },
   data() {
     return {
       value: 4,
+      profileLinks: [
+        { id: 1, name: 'OVERVIEW', url: '/profile/overview' },
+        { id: 2, name: 'ORDERS', url: '/profile/orders' },
+        { id: 3, name: 'MEASUREMENTS', url: '/profile/measurements' },
+        { id: 4, name: 'PAYMENT METHODS', url: '/profile/payment-methods' },
+        { id: 5, name: 'SHIPPING ADDRESS', url: '/profile/shipping-address' },
+        { id: 6, name: 'MESSAGE CENTER', url: '/profile/message-center' },
+        { id: 7, name: 'ACCOUNT SETTING', url: '/profile/account-settings' },
+        { id: 8, name: 'SUPPORT CENTER', url: '/profile/support-center' },
+      ],
       // isSidebar: t
     }
   },
@@ -136,7 +71,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .shell {
   position: relative;
 }
@@ -153,25 +88,25 @@ export default {
   z-index: 9999;
 }
 
-.sidebar-section .sidebar ul {
+.profile .sidebar-section .sidebar ul {
   list-style: none;
 }
-.sidebar-section .sidebar ul li {
+.profile .sidebar-section .sidebar ul li {
   margin-bottom: 15px;
   display: block;
 }
-.sidebar-section .sidebar ul li a:hover {
+.profile .sidebar-section .sidebar ul li a:hover {
   border-left: 4px solid #eb542b;
   cursor: pointer;
   background: #f4f4f4;
 }
 
-.sidebar-section .sidebar ul li a.nuxt-link-exact-active {
+.profile .sidebar-section .sidebar ul li a.nuxt-link-exact-active {
   border-left: 4px solid #eb542b;
   background: #f4f4f4;
 }
 
-.sidebar-section .sidebar ul li a {
+.profile .sidebar-section .sidebar ul li a {
   color: #241c1c;
   text-transform: uppercase;
   font-size: 14px;
@@ -364,8 +299,12 @@ display: none !important;
     width: 100%;
   }
 
+  /* .sidebar-section {
+    display: none;
+  } */
+
   .sidebar-open .sidebar-section {
-    position: absolute;
+    position: fixed;
     left: 0;
     background: #fff;
     height: 100vh !important;
@@ -377,6 +316,14 @@ display: none !important;
 
   .sidebar-open .sidebar-section ul {
     padding-left: 0;
+  }
+
+  .item-showbox .product-flash .image-box {
+    width: 100%;
+  }
+
+  .account-section .nav-pills .nav-link {
+    font-size: 14px;
   }
 }
 </style>

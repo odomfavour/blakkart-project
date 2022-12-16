@@ -4,7 +4,9 @@
       <div class="d-flex justify-content-end align-items-center mb-5">
         <button class="btn btn-primary">Contact Support</button>
       </div>
-      <h2 class="text-center font-weight-bold">How can we help you?</h2>
+      <h2 class="text-center font-weight-bold page-title">
+        How can we help you?
+      </h2>
       <div class="my-4 search-shrink">
         <div class="input-group mb-3">
           <input
@@ -14,7 +16,12 @@
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
-          <span class="input-group-text bg-dark text-white" id="basic-addon2" role="button"><b-icon icon="search"></b-icon></span>
+          <span
+            class="input-group-text bg-dark text-white"
+            id="basic-addon2"
+            role="button"
+            ><b-icon icon="search"></b-icon
+          ></span>
         </div>
       </div>
       <div class="d-flex align-items-center w-or">
@@ -24,7 +31,7 @@
       </div>
       <div class="d-flex mx-auto centered-cards my-5">
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-md-6 mb-3">
             <div class="text-center grayed p-4">
               <b-icon icon="question-circle-fill" font-scale="3"></b-icon>
               <h5 class="my-2 font-weight-bold">Getting Started</h5>
@@ -34,7 +41,7 @@
               >
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6 mb-3">
             <div class="text-center grayed p-4">
               <b-icon icon="file-earmark-fill" font-scale="3"></b-icon>
               <h5 class="my-2 font-weight-bold">FAQs</h5>
@@ -137,12 +144,8 @@ export default {
         { isVisible: false },
         { isVisible: false },
       ],
-      faqs: [
-        { isVisible: true },
-        { isVisible: false },
-        { isVisible: false },
-      ],
-      isGettingStarted: true
+      faqs: [{ isVisible: true }, { isVisible: false }, { isVisible: false }],
+      isGettingStarted: true,
     }
   },
 }
@@ -177,9 +180,24 @@ export default {
   width: 50%;
   margin: 0 auto;
 }
-/* 
- .collapsed > .when-opened,
-    :not(.collapsed) > .when-closed {
-        display: none;
-    } */
+
+@media (max-width: 769px) {
+  .centered-cards {
+    width: 80%;
+  }
+}
+
+@media (max-width: 426px) {
+  .centered-cards {
+    width: 100%;
+  }
+
+  .search-shrink {
+    width: 100%;
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+}
 </style>

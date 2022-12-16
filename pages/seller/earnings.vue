@@ -1,7 +1,7 @@
 <template>
   <section class="earnings-section">
     <div class="wallet-section">
-      <div class="d-flex justify-content-between align-items-center px-4">
+      <div class="d-flex justify-content-between align-items-center px-4 flex-md-row flex-column">
         <h4>Wallet Balance</h4>
         <div class="d-flex align-items-center">
           <p class="mb-0 mr-2">Account details</p>
@@ -21,6 +21,8 @@
           d-flex
           align-items-center
           justify-content-between
+          flex-md-row
+          flex-column
           p-4
         "
         style="background: #f4f4f4"
@@ -130,6 +132,10 @@ export default {
 </script>
 
 <style>
+.earnings-section {
+  font-family: 'Inter', sans-serif;
+}
+
 .earnings-section .nav {
   background: #fff;
 }
@@ -170,5 +176,32 @@ export default {
 .order-main-info {
   width: 45%;
   padding: 0 12px;
+}
+
+@media (max-width: 769px) {
+  .price-box {
+    width: 30%;
+  }
+
+  .order-info {
+    width: 70%;
+  }
+}
+
+@media (max-width: 426px) {
+  .price-box,
+  .order-info, .sort-input, .search-input {
+    width: 100%;
+  }
+
+  .search-input {
+    margin-bottom: 20px;
+  }
+
+  .order-main-info {
+    width: 90%;
+    padding: 0;
+  }
+
 }
 </style>

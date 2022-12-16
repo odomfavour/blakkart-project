@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <section class="analytics-section">
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-lg-5 col-md-8">
         <div class="p-3" style="background: #f9f9f9">
           <div class="mb-5">
             <div
@@ -194,7 +194,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-7">
+      <div class="col-lg-7">
         <div>
           <section style="background: #f9f9f9">
             <div class="card">
@@ -417,6 +417,10 @@ export default {
 </script>
 
 <style>
+
+.analytics-section {
+  font-family: 'Inter', sans-serif;
+}
 .sort-input {
   width: 50%;
 }

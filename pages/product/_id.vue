@@ -3,22 +3,15 @@
     <section>
       <div class="container">
         <div class="my-5">
+          <!-- {{ productInfo }} -->
+          <!-- {{ productImage }} -->
           <div class="row">
             <div class="col-md-6">
-              <img src="/product.png" class="img-fluid prod-img" alt="" />
+              <img :src="`/market/${productImage.image}.png`" class="img-fluid prod-img" alt="" />
               <div class="my-4">
                 <div class="row">
-                  <div class="col-md-3 col-3 px-2">
-                    <img src="/product.png" class="img-fluid prod-img" alt="" />
-                  </div>
-                  <div class="col-md-3 col-3 px-2">
-                    <img src="/product.png" class="img-fluid prod-img" alt="" />
-                  </div>
-                  <div class="col-md-3 col-3 px-2">
-                    <img src="/product.png" class="img-fluid prod-img" alt="" />
-                  </div>
-                  <div class="col-md-3 col-3 px-2">
-                    <img src="/product.png" class="img-fluid prod-img" alt="" />
+                  <div class="col-md-3 col-3 px-2" v-for="(pic, index) in 4" :key="index">
+                    <img :src="`/market/${productImage.image}.png`" class="img-fluid s-prod-img" alt="" />
                   </div>
                 </div>
               </div>
@@ -265,47 +258,11 @@
           <h3 class="text-uppercase mb-5">
             More from <span class="text-orange">Tomilola Stitches</span>
           </h3>
-          <div class="row">
-            <div class="col-md-2" v-for="product in 6" :key="product">
-              <div class="product-card">
-                <img
-                  src="/product-image.png"
-                  alt=" product"
-                  class="img-fluid"
-                />
-                <div
-                  class="
-                    d-flex
-                    justify-content-between
-                    align-items-between
-                    pt-2
-                  "
-                >
-                  <p class="mb-0">Ankara Jesu</p>
-                  <p class="mb-0">CAD $200</p>
-                </div>
-                <hr />
-                <div class="d-flex justify-content-between align-items-between">
-                  <b-form-rating
-                    v-model="value"
-                    readonly
-                    no-border
-                    size="sm"
-                    class="p-0"
-                  ></b-form-rating>
-                  <div class="d-flex">
-                    <div class="mr-3">
-                      <b-icon icon="heart" role="button"></b-icon>
-                    </div>
-                    <div><b-icon icon="handbag" role="button"></b-icon></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <featured-designers />
         </div>
         <div class="mb-5">
-          <h3 class="text-uppercase mb-5">
+          <featured-designers />
+          <!-- <h3 class="text-uppercase mb-5">
             More from <span class="text-orange">Men Clothing</span>
           </h3>
           <div class="row">
@@ -360,7 +317,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -368,9 +325,10 @@
 </template>
 
 <script>
+import FeaturedDesigners from '~/components/FeaturedDesigners.vue'
 import AboutDesigner from '~/components/Product/AboutDesigner.vue'
 export default {
-  components: { AboutDesigner },
+  components: { AboutDesigner, FeaturedDesigners },
   data() {
     return {
       fabricPatterns: [
@@ -394,9 +352,241 @@ export default {
       measureNow: false,
       isCustomEdit: false,
       readyToShip: true,
+      designers: [
+        {
+          id: 1,
+          name: 'NGZ Fashion hauz',
+          location: 'Port Harcourt',
+          country: 'Nigeria',
+          image: 'product',
+          owner: 'Ngozi Chika',
+          rating: 3,
+          purchases: 2000,
+          products: [
+            {
+              id: 1,
+              name: 'Summer piece one',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-1',
+            },
+            {
+              id: 2,
+              name: 'Summer piece two',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-2',
+            },
+            {
+              id: 3,
+              name: 'Summer piece three',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-3',
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: 'Luiz Fashion',
+          location: 'Texas',
+          country: 'US',
+          image: 'vitton',
+          owner: 'Luiz',
+          rating: 5,
+          purchases: 20000,
+           products: [
+            {
+              id: 1,
+              name: 'Summer piece one',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-1',
+            },
+            {
+              id: 2,
+              name: 'Summer piece two',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-2',
+            },
+            {
+              id: 3,
+              name: 'Summer piece three',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-3',
+            },
+          ],
+        },
+        {
+          id: 3,
+          name: 'Descobee',
+          location: 'Lagos',
+          country: 'Nigeria',
+          image: 'zara',
+          owner: 'Desco',
+          rating: 4,
+          purchases: 1000,
+           products: [
+            {
+              id: 1,
+              name: 'Summer piece one',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-1',
+            },
+            {
+              id: 2,
+              name: 'Summer piece two',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-2',
+            },
+            {
+              id: 3,
+              name: 'Summer piece three',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-3',
+            },
+          ],
+        },
+        {
+          id: 4,
+          name: 'Far Away',
+          location: 'lafod',
+          country: 'China',
+          image: 'product',
+          owner: 'Farell',
+          rating: 4,
+          purchases: 1500,
+         products: [
+            {
+              id: 1,
+              name: 'Summer piece one',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-1',
+            },
+            {
+              id: 2,
+              name: 'Summer piece two',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-2',
+            },
+            {
+              id: 3,
+              name: 'Summer piece three',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-3',
+            },
+          ],
+        },
+        {
+          id: 5,
+          name: 'Billya Ona',
+          location: 'Port Harcourt',
+          country: 'Nigeria',
+          owner: 'Billy',
+          image: 'product',
+          rating: 3,
+          purchases: 2000,
+          products: [
+            {
+              id: 1,
+              name: 'Summer piece one',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-1',
+            },
+            {
+              id: 2,
+              name: 'Summer piece two',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-2',
+            },
+            {
+              id: 3,
+              name: 'Summer piece three',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-3',
+            },
+          ],
+        },
+        {
+          id: 6,
+          name: 'Zara fair',
+          location: 'South Hampton',
+          country: 'Canada',
+          image: 'zara',
+          owner: 'Zarar',
+          rating: 5,
+          purchases: 2000,
+          products: [
+            {
+              id: 1,
+              name: 'Summer piece one',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-1',
+            },
+            {
+              id: 2,
+              name: 'Summer piece two',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-2',
+            },
+            {
+              id: 3,
+              name: 'Summer piece three',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-3',
+            },
+          ],
+        },
+        {
+          id: 7,
+          name: 'Nosa Oba',
+          location: 'Port Harcourt',
+          country: 'Nigeria',
+          image: 'vitton',
+          rating: 3,
+          purchases: 1100,
+         products: [
+            {
+              id: 1,
+              name: 'Summer piece one',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-1',
+            },
+            {
+              id: 2,
+              name: 'Summer piece two',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-2',
+            },
+            {
+              id: 3,
+              name: 'Summer piece three',
+              desc: 'Men’s casual fashion short hdgdj jhdihyuydsydysidusidudusidhsdhiidisdisdiss....',
+              image: 'prod-3',
+            },
+          ],
+        },
+      ],
     }
   },
   methods: {},
+  created() {
+    console.log(this.$route.params)
+  },
+  computed: {
+    // count() {
+    //     return this.$store.state.counter;
+    // },
+    productInfo() {
+      return this.designers.find((item) =>
+        item.products.find(
+          (prod) => prod.name.replaceAll(' ', '-') === this.$route.params.id
+        )
+      )
+    },
+    productImage() {
+      return this.productInfo.products.find(
+        (image) => image.name.replaceAll(' ', '-') === this.$route.params.id
+      )
+    },
+  },
+  //
 }
 </script>
 
@@ -404,6 +594,8 @@ export default {
 .prod-img {
   object-fit: cover;
   width: 100% !important;
+  height: 650px;
+  object-position: top;
 }
 
 .option-box {

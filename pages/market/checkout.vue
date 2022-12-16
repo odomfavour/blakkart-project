@@ -55,6 +55,7 @@ import OrderComplete from '~/components/Checkout/OrderComplete.vue'
 import OrderSummary from '~/components/Checkout/OrderSummary.vue'
 import PaymentInfo from '~/components/Checkout/PaymentInfo.vue'
 export default {
+  middleware: 'auth',
   components: { DetailsTab, PaymentInfo, OrderSummary, OrderComplete },
   data() {
     return {

@@ -5,46 +5,60 @@
       <div class="container">
         <div class="d-flex">
           <div class="side-info-section px-2 pt-5">
+            <button
+              class="p-1 mb-2 d-lg-none d-block"
+              @click="$store.commit('toggleMarketBar')"
+            >
+              <b-icon icon="chevron-double-right"></b-icon>
+            </button>
             <div class="person-info text-center">
-              <h2>Hi, <span class="text-orange">Ngozi</span></h2>
-             <div v-if="$route.path === '/market'">
-               <p>
-                Update your measurements to<br />
-                request custom order
-              </p>
-              <div class="d-flex justify-content-center">
-                <nuxt-link
-                to="/profile/measurements"
-                  class="
-                    d-flex
-                    justify-content-center
-                    align-items-center
-                    orange-btn
-                  "
-                  style="font-size: 12px; padding: 10px 15px; cursor: pointer"
-                >
-                  UPDATE PROFILE
-                </nuxt-link>
-             </div>
+              <h2>
+                Hi,
+                <span class="text-orange text-capitalize" v-if="$auth.user">{{
+                  $auth.user.first_name
+                }}</span>
+              </h2>
+              {{ $auth.loggedIn }}
+              <!-- {{$auth.loggedIn}} -->
+              <div v-if="$route.path === '/market'">
+                <p>
+                  Update your measurements to<br />
+                  request custom order
+                </p>
+                <div class="d-flex justify-content-center">
+                  <nuxt-link
+                    to="/profile/measurements"
+                    class="
+                      d-flex
+                      justify-content-center
+                      align-items-center
+                      btn-filled-orange-sq
+                    "
+                    style="font-size: 12px; padding: 10px 15px; cursor: pointer"
+                  >
+                    UPDATE PROFILE
+                  </nuxt-link>
+                </div>
               </div>
-             <div v-else>
-               <p>
-                Need a style not listed here? <b>Create a custom request for the designer.</b>
-              </p>
-              <div class="d-flex justify-content-center">
-                <nuxt-link
-                to="/custom"
-                  class="
-                    d-flex
-                    justify-content-center
-                    align-items-center
-                    orange-btn
-                  "
-                  style="font-size: 12px; padding: 10px 15px; cursor: pointer"
-                >
-                  MAKE CUSTOM REQUEST
-                </nuxt-link>
-             </div>
+              <div v-else>
+                <p>
+                  Need a style not listed here?
+                  <b>Create a custom request for the designer.</b>
+                </p>
+                <div class="d-flex justify-content-center">
+                  <nuxt-link
+                    to="/custom"
+                    class="
+                      d-flex
+                      justify-content-center
+                      align-items-center
+                      orange-btn
+                    "
+                    style="font-size: 12px; padding: 10px 15px; cursor: pointer"
+                  >
+                    MAKE CUSTOM REQUEST
+                  </nuxt-link>
+                </div>
               </div>
             </div>
             <div class="pt-5 filter-section">
@@ -156,9 +170,12 @@
           </div>
         </div>
       </div>
-      <section class="py-5">
+      <section class="py-5" v-if="$route.path === '/market'">
         <h4 class="text-center mb-5">BROWSE OTHER CATEGORIES</h4>
         <ShopCategories />
+      </section>
+      <section class="py-5" v-else>
+        <featured-designers />
       </section>
     </main>
     <Footer />
@@ -166,9 +183,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import FeaturedDesigners from '~/components/FeaturedDesigners.vue'
 export default {
+  components: { FeaturedDesigners },
+  // middleware: 'auth',
   data() {
     return {
+      user: {},
       styles: [
         { id: 1, name: 'One Kind of Style', count: 11 },
         { id: 2, name: 'Another One', count: 11 },
@@ -203,12 +225,23 @@ export default {
     addFilter() {
       this.$store.commit('addFilter', this.mergedOptions)
     },
+    toggleSidebar() {
+      console.log('heee')
+      document.body.classList.toggle('filter-open')
+    },
   },
   computed: {
+    //  ...mapGetters(['isAuthenticated', 'loggedInUser']),
     mergedOptions() {
       // console.log(this.$store.state.filterOptions)
       return this.selectedStyles.concat(this.selectedFabrics)
     },
+  },
+  created() {
+    if (process.client) {
+      this.$auth.setUser(JSON.parse(localStorage.getItem('blacArtUser')))
+      // console.log(this.$auth.user)
+    }
   },
 }
 </script>
@@ -239,9 +272,9 @@ export default {
   display: block !important;
 }
 
-.b-rating {
+/* .b-rating {
   width: 50%;
-}
+} */
 
 .text-orange {
   color: #eb3d0e;
@@ -327,7 +360,77 @@ export default {
   width: 25%;
 }
 
+.category-banner {
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.518), rgba(0, 0, 0, 0.326)),
+    url('/men.png') no-repeat;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+}
+
+.product-card {
+  transition: 0.4s all ease-in-out;
+}
+
+.product-card a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* .product-card .favorite-stamp {
+  display: none;
+}
+
+.product-image-box {
+  position: relative;
+}
+
+.product-card:hover .favorite-stamp {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.626);
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+} */
+
+.favorite-stamp svg{
+  height: 31px;
+  width: 30px;
+}
+
+.search-section .input-group-text {
+  border-radius: 0.25rem 0 0 0.25rem;
+  background: #fff;
+  border-right: none;
+}
+
+.product-card .b-rating {
+  font-size: 20px;
+  padding: 0 !important;
+  width: 70%;
+  color: #eb3d0e;
+}
+
 @media (max-width: 426px) {
+  .product-card .b-rating {
+    font-size: 10px;
+  }
+  .side-info-section {
+    display: none;
+  }
+
+  .main-section {
+    width: 100%;
+  }
+
+  main {
+    background: #FBFBFB;
+  }
   .checkout-forms .nav li {
     width: auto;
   }
@@ -341,5 +444,24 @@ export default {
   .checkout-cards-section {
     width: 100%;
   }
+
+  .btn-orange {
+    font-size: 14px;
+  }
+
+  .filter-open .side-info-section {
+    position: fixed !important;
+    left: 0;
+    background: #fff;
+    min-height: 100vh !important;
+    top: 0;
+    z-index: 9999;
+    display: block;
+    width: 70%;
+  }
+
+  /* .filter-open .filter-section {
+    height: 100%;
+  } */
 }
 </style>
