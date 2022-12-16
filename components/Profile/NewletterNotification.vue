@@ -41,8 +41,8 @@
       </div>
       <hr />
     </div>
-   <div class="d-flex justify-content-center mt-3">
-    <button class="btn btn-primary mr-3">SAVE CHANGES</button>
+   <div class="d-flex justify-content-center mt-3 flex-md-row flex-column gy-2">
+    <button class="btn btn-primary mr-md-3 mb-2 mb-md-0">SAVE CHANGES</button>
     <button class="btn btn-primary">UNSUBSCRIBE FROM ALL</button>
    </div>
   </section>

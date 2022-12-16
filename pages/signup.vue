@@ -45,7 +45,7 @@
               </p>
               <form action="" @submit.prevent="SignupUser">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-lg-6">
                     <div class="mb-3">
                       <label for="firstName" class="form-label text-black"
                         >First Name</label
@@ -55,10 +55,11 @@
                         class="form-input"
                         id="firstName"
                         placeholder="Enter your first name"
+                        v-model="user.first_name"
                       />
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-lg-6">
                     <div class="mb-3">
                       <label for="lastName" class="form-label text-black"
                         >Last Name</label
@@ -68,6 +69,7 @@
                         class="form-input"
                         id="lastName"
                         placeholder="Enter your last name"
+                        v-model="user.last_name"
                       />
                     </div>
                   </div>
@@ -78,19 +80,28 @@
                     type="email"
                     class="form-input"
                     id="email"
+                    required
                     placeholder="name@example.com"
+                    v-model="user.email"
                   />
                 </div>
                 <div class="mb-3">
                   <label for="country" class="form-label text-black"
                     >Country</label
-                  ><br>
+                  ><br />
                   <select
                     class=""
                     aria-label="Default select example"
+                    v-model="user.country"
                   >
-                    <option selected>Select your Country</option>
-                    <option :value="country.name" v-for="(country, index) in countries" :key="index">{{country.name}}</option>
+                    <option selected value="null">Select your Country</option>
+                    <option
+                      :value="country.name"
+                      v-for="(country, index) in countries"
+                      :key="index"
+                    >
+                      {{ country.name }}
+                    </option>
                   </select>
                 </div>
                 <div class="mb-3">
@@ -102,6 +113,7 @@
                     class="form-input"
                     id="password"
                     placeholder="Password"
+                    v-model="user.password"
                   />
                 </div>
                 <div class="mb-3">
@@ -113,6 +125,7 @@
                     class="form-input"
                     id="confirmPassword"
                     placeholder="Password"
+                    v-model="confirmPassword"
                   />
                 </div>
                 <div class="mb-3 d-flex justify-content-end">
@@ -125,7 +138,9 @@
                   </p>
                 </div>
                 <div class="mb-3">
-                  <button class="black-btn">Join Blakkart Now</button>
+                  <button class="black-btn" type="submit">
+                    Join Blakkart Now
+                  </button>
                 </div>
                 <div>
                   <p class="pt-3 text-mild">
@@ -141,21 +156,86 @@
         </div>
       </div>
     </div>
+    <alert-modal :id="'success'" :message="message" />
+    <alert-modal :id="'error'" :message="message" />
   </section>
 </template>
 
 <script>
+import AlertModal from '~/components/AlertModal.vue'
 import { allCountries } from '~/countries'
+import axios from '@nuxtjs/axios'
 export default {
+  components: { AlertModal },
   layout: 'plain',
   data() {
     return {
       countries: allCountries,
+      user: {
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        country: null,
+      },
+      // alertId: null,
+      message: '',
+      confirmPassword: '',
+      userType: 'buyer',
     }
   },
   methods: {
-    SignupUser() {
-      this.$router.push('/market')
+    async SignupUser() {
+      console.log(this.user)
+      if (
+        this.user.first_name === '' &&
+        this.user.last_name === '' &&
+        this.user.password === '' &&
+        this.user.email === '' &&
+        this.user.country === null
+      ) {
+        this.message = 'Please fill out the necessary fields'
+        this.$bvModal.show('error')
+      } else if (!this.user.first_name) {
+        this.message = 'Please put a name'
+        this.$bvModal.show('error')
+      } else if (!this.user.last_name) {
+        this.message = 'Please put a name'
+        this.$bvModal.show('error')
+      } else if (!this.user.email) {
+        this.message = 'Please put an email'
+        this.$bvModal.show('error')
+      } else if (!this.user.password) {
+        this.message = 'Please put a password'
+        this.$bvModal.show('error')
+      } else if (this.user.password !== this.confirmPassword) {
+        this.message = 'Passwords must match'
+        this.$bvModal.show('error')
+      } else {
+        try {
+          const response = await this.$axios.$post('/auth/register', this.user)
+          console.log(response)
+          this.message = response.message
+          this.$bvModal.show('success')
+         let logged = await this.$auth.loginWith('local', {
+            data: {
+              email: this.user.email,
+              password: this.user.password,
+              user_type: this.userType,
+            },
+          })
+          console.log(logged)
+          localStorage.setItem(
+            'blacArtUser',
+            JSON.stringify(logged.data.data)
+          )
+          let user = JSON.parse(localStorage.getItem('blacArtUser'))
+          this.$auth.setUser(user)
+          this.$router.push('/market')
+        } catch (error) {
+          console.log(error)
+        }
+      }
     },
   },
 }
@@ -232,8 +312,8 @@ export default {
   margin-bottom: 10px;
 }
 
-.form-input, .form-container select
-.social-btn {
+.form-input,
+.form-container select .social-btn {
   width: 100% !important;
   padding: 10px 19px;
 }
@@ -262,6 +342,10 @@ export default {
   .form-container {
     width: 100%;
   }
+
+  .back-btn-container {
+    width: 100%;
+  }
 }
 
 @media (max-width: 426px) {
@@ -274,6 +358,10 @@ export default {
   }
 
   .form-container {
+    width: 100%;
+  }
+
+  .back-btn-container {
     width: 100%;
   }
 }

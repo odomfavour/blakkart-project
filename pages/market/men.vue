@@ -2,7 +2,7 @@
   <section>
     <div class="category-banner"></div>
     <div class="pt-5">
-      <div class="filter-display mb-2">
+      <div class="filter-display mb-2 d-none d-lg-block">
         <b-form-tags
           input-id="tags-pills"
           tag-variant="secondary"
@@ -10,6 +10,20 @@
           separator=" "
           disabled
         ></b-form-tags>
+      </div>
+      <div class="d-md-none">
+        <div
+          class="
+            mobile-filter
+            d-flex
+            justify-content-between
+            align-items-center
+            py-3
+          "
+        >
+          <p role="button"><b-icon icon="menu-button-wide"></b-icon> Filter</p>
+          <p><b-icon icon="menu-button-wide"></b-icon>Filter</p>
+        </div>
       </div>
       <div class="clothes-display">
         <div class="row">
@@ -19,19 +33,25 @@
             :key="product"
           >
             <div class="product-card">
-             <nuxt-link to="/product"> <img src="/product-image.png" alt=" product" class="img-fluid" />
-              <div
-                class="
-                  d-flex
-                  justify-content-between
-                  align-items-between
-                  px-3
-                  pt-2
-                "
+              <nuxt-link to="/product">
+                <img
+                  src="/product-image.png"
+                  alt=" product"
+                  class="img-fluid"
+                />
+                <div
+                  class="
+                    d-flex
+                    justify-content-between
+                    align-items-between
+                    px-3
+                    pt-2
+                  "
+                >
+                  <p class="mb-0">Ankara Jesu</p>
+                  <p class="mb-0">CAD $200</p>
+                </div></nuxt-link
               >
-                <p class="mb-0">Ankara Jesu</p>
-                <p class="mb-0">CAD $200</p>
-              </div></nuxt-link>
               <hr />
               <div
                 class="d-flex justify-content-between align-items-between px-3"
@@ -44,7 +64,9 @@
                   class="p-0"
                 ></b-form-rating>
                 <div class="d-flex">
-                  <div class="mr-3"><b-icon icon="heart" role="button"></b-icon></div>
+                  <div class="mr-3">
+                    <b-icon icon="heart" role="button"></b-icon>
+                  </div>
                   <div><b-icon icon="handbag" role="button"></b-icon></div>
                 </div>
               </div>
@@ -113,10 +135,23 @@ export default {
   height: 220px;
   background-size: cover;
   background-position: center;
-  width: 110%;
+  width: 100%;
 }
 
 .b-rating {
   width: 50%;
+}
+
+.mobile-filter {
+  display: block;
+}
+
+@media (max-width: 426px) {
+  .category-banner {
+    width: 100%;
+  }
+  .mobile-filter {
+    display: none;
+  }
 }
 </style>

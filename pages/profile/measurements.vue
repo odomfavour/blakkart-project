@@ -36,4 +36,10 @@ export default {
   margin: 0 auto;
   padding: 15px;
 }
+
+@media (max-width: 426px) {
+  .core-box {
+    width: 100% !important;
+  }
+}
 </style>

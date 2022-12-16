@@ -1,6 +1,6 @@
 <template>
   <section class="my-5">
-    <div class="d-flex justify-content-between align-items-center flex-md-row flex-column">
+    <div class="d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column">
       <div class="transaction-stage" :class="order.stage === 'processing' ? 'green': order.stage === 'cancelled' ? 'red' : order.stage === 'completed' ? 'blue' : 'yellow' ">
         <p class="mb-0">{{order.stage}}</p>
       </div>
@@ -8,7 +8,7 @@
     </div>
     <hr />
     <div class="item-showbox p-3">
-      <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-between align-items-center flex-md-row flex-column">
         <div class="d-flex align-items-center product-flash">
           <div class="image-box mr-3">
             <img src="/product.png" class="img-fluid" alt="" />
@@ -44,4 +44,11 @@ export default {
 </script>
 
 <style>
+
+@media (max-width: 426px) {
+  .product-flash {
+    flex-direction: column;
+    text-align: center;
+  }
+}
 </style>

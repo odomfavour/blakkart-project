@@ -5,7 +5,7 @@
         <b-tabs pills vertical>
           <b-tab title="EDIT PROFILE" active>
             <b-card-text>
-              <div class="profile-box px-4 py-5">
+              <div class="profile-box px-md-4 px-2 py-5">
                 <edit-profile-form />
               </div> </b-card-text
           ></b-tab>
@@ -40,6 +40,16 @@ export default {
 <style scoped>
 .profile-box {
   background: #f4f4f4;
+}
+
+@media (max-width: 426px) {
+  .profile-box {
+    margin-top: 20px;
+  }
+  
+  .profile-box label {
+    font-size: 14px !important;
+  }
 }
 
 

@@ -40,34 +40,44 @@
             </div>
 
             <div class="login-main">
-              <p class="text-mild main-intro">Fill in your details to <span class="text-black">Log in</span></p>
-              <form action="">
+              <p class="text-mild main-intro">
+                Fill in your details to <span class="text-black">Log in</span>
+              </p>
+              <form action="" @submit.prevent="loginUser">
                 <div class="mb-3">
-                   <label for="email" class="form-label text-black">Email</label>
+                  <label for="email" class="form-label text-black">Email</label>
                   <input
                     type="email"
                     class="form-input"
                     id="email"
+                    v-model="email"
                     placeholder="name@example.com"
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="password" class="form-label text-black">Enter Password</label>
+                  <label for="password" class="form-label text-black"
+                    >Enter Password</label
+                  >
                   <input
                     type="password"
                     class="form-input"
                     id="password"
+                    v-model="password"
                     placeholder="Password"
                   />
                 </div>
                 <div class="mb-3 d-flex justify-content-end">
-                  <nuxt-link to="#" class="text-black">Forgot Password?</nuxt-link>
+                  <nuxt-link to="#" class="text-black"
+                    >Forgot Password?</nuxt-link
+                  >
                 </div>
                 <div class="mb-3">
-                  <button class="black-btn">Join Blakkart Now</button>
+                  <button class="black-btn" type="submit">
+                    Join Blakkart Now
+                  </button>
                 </div>
                 <div>
-                 
+                  {{ $store.state.auth.loggedIn }}
                   <p class="pt-3 text-mild">
                     Not registered?
                     <nuxt-link to="/signup" class="text-oranged"
@@ -87,6 +97,34 @@
 <script>
 export default {
   layout: 'plain',
+  data() {
+    return {
+      email: '',
+      password: '',
+      userType: 'buyer',
+    }
+  },
+  methods: {
+    async loginUser() {
+      try {
+        let response = await this.$auth.loginWith('local', {
+          data: {
+            email: this.email,
+            password: this.password,
+            user_type: this.userType,
+          },
+        })
+        let token = response.data.data.token
+        // this.$axios.defaults.headers.common = { Authorization: `Bearer ${token}` };
+        localStorage.setItem('blacArtUser', JSON.stringify(response.data.data))
+        let user = JSON.parse(localStorage.getItem('blacArtUser'))
+        this.$auth.setUser(user)
+        this.$router.push('/market')
+      } catch (e) {
+        this.error = e
+      }
+    },
+  },
 }
 </script>
 
@@ -190,6 +228,10 @@ export default {
   .form-container {
     width: 100%;
   }
+
+  .back-btn-container {
+    width: 100%;
+  }
 }
 
 @media (max-width: 426px) {
@@ -202,6 +244,14 @@ export default {
   }
 
   .form-container {
+    width: 100%;
+  }
+
+  .form-container .top-section {
+    width: 80%;
+  }
+
+  .back-btn-container {
     width: 100%;
   }
 }

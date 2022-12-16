@@ -1,53 +1,69 @@
 @font-face {
-    font-family: "Verdana";
-    src: local("Verdana"),
-     url(~assets/verdana-font-family/verdana.ttf) format("truetype");
+  font-family: 'Verdana';
+  src: local('Verdana'),
+    url(~assets/verdana-font-family/verdana.ttf) format('truetype');
 }
 @font-face {
-    font-family: "CaghenDemo";
-    src: local("CaghenDemo"),
-     url(~assets/Caghen_Demo.ttf) format("truetype");
+  font-family: 'CaghenDemo';
+  src: local('CaghenDemo'), url(~assets/Caghen_Demo.ttf) format('truetype');
 }
 
-html {
+/* html {
     font-family: "Verdana";
-}
+} */
 
 .container {
-    max-width: 90% !important;
-    margin: 0 auto;
+  max-width: 90% !important;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .text-black {
-    color: #1F1F1F;
+  color: #1f1f1f;
+}
+
+.text-orange:hover {
+  text-decoration: none;
+  color: #eb3d0e;
 }
 
 .text-oranged {
-    color: #EB3D0E;
+  color: #eb3d0e;
 }
 
 .text-mild {
-    color: #6E6E6E;
+  color: #6e6e6e;
+}
+
+.btn-outline-orange {
+  border: 1px solid #eb3d0e;
+  border-radius: 12px;
+  padding: 8px 29px;
+  font-size: 12px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn-outline-orange-sq {
-    border: 1px solid #EB3D0E;
-    background: #fff;
-    padding: 10px 0;
+  border: 1px solid #eb3d0e;
+  background: #fff;
+  padding: 10px 0;
 }
 
 .btn-filled-orange-sq {
-    background: #EB3D0E;
-    color: white;
-    border: 1px solid #EB3D0E;
-    padding: 10px 20px;
+  background: #eb3d0e;
+  color: white;
+  border: 1px solid #eb3d0e;
+  padding: 10px 20px;
 }
 
 .review-card {
-    border-bottom: 0.5px solid #dddddd;
-    padding: 20px 0;
-  }
+  border-bottom: 0.5px solid #dddddd;
+  padding: 20px 0;
+}
 
-  .review-card svg {
-    color: #EB3D0E;
-  }
+.review-card svg {
+  color: #eb3d0e;
+}

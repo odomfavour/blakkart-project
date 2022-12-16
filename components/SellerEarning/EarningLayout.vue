@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-lg-between align-items-center flex-md-row flex-column">
       <h6 class="d-flex align-items-center">
         {{ name }}
         <span class="ml-2" v-if="name == 'Outstanding'"
@@ -29,7 +29,7 @@
     </div>
     <p class="my-5 text-center">28 SEPTEMBER 2021</p>
     <div
-      class="bg-white d-flex align-items-center p-3 mb-2"
+      class="bg-white d-flex align-items-center p-3 mb-2 flex-md-row flex-column-reverse"
       v-for="card in 5"
       :key="card"
     >
@@ -70,7 +70,7 @@
             This order is ready
             <span><b-icon icon="check2" style="color: #2e7d32"></b-icon></span>
           </p>
-          <div v-else class="d-flex">
+          <div v-else class="d-flex flex-md-row flex-column">
             <p class="mb-0 mr-3">28 Sep 2022</p>
             <p class="mb-0 mr-3">17:43PM</p>
           </div>

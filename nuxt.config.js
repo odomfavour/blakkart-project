@@ -39,7 +39,34 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next'
   ],
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'data.token',
+          global: true,
+          required: true,
+          type: 'Bearer'
+        },
+        user: false,
+        endpoints: {
+          login: { url: 'auth/login', method: 'post', propertyName: 'token'},
+          logout: { url: '/api/auth/logout', method: 'post' },
+          user: false
+          // user: { url: '/api/v1/users/', method: 'get', propertyName: 'data._id' }
+        },
+        redirect: {
+          login: '/market',
+          logout: '/',
+          // callback: '/login',
+          home: '/'
+        }
+      }
+    }
+  },
 
   googleFonts: {
     families: {
@@ -51,6 +78,8 @@ export default {
   
       // specific font weights
       Lato: [100, 300],
+      Montserrat: true,
+      Inter: true,
     }
   },
 
@@ -61,7 +90,9 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'https://blakkart-api.herokuapp.com/api/v1/',
+    proxyHeaders: false,
+    credentials: false
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

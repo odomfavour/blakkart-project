@@ -71,7 +71,7 @@
           </button>
           <button
             class="btn-black px-md-5 py-2 px-3"
-            @click="tabIndex++"
+            @click="CreateSeller"
             v-if="tabIndex === 3"
           >
             Finish
@@ -94,7 +94,11 @@ export default {
       tabIndex: 1,
     }
   },
-  methods: {},
+  methods: {
+    CreateSeller() {
+      this.$router.push('/seller')
+    }
+  },
 }
 </script>
 

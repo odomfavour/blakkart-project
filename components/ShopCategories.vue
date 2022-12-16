@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section id="categoriesSlider">
     <VueSlickCarousel v-bind="settings" :dots="true" :arrows="true">
       <div
         class="user-card d-flex justify-content-center align-items-center"
